@@ -1,0 +1,7 @@
+{
+  "name": "LVI-App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
