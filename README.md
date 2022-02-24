@@ -1,1 +1,3 @@
-"# LVI-App" 
+# LVI-App
+
+Ionic application.
