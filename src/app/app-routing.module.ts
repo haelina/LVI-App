@@ -24,6 +24,22 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/jobs/jobs.module').then((m) => m.JobsPageModule),
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'mypage',
+    loadChildren: () => import('./pages/mypage/mypage.module').then( m => m.MypagePageModule)
+  },
+  {
+    path: 'trainees',
+    loadChildren: () => import('./pages/trainees/trainees.module').then( m => m.TraineesPageModule)
+  },
 ];
 
 @NgModule({
