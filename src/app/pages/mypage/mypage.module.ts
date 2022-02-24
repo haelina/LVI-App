@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { MypagePageRoutingModule } from './mypage-routing.module';
 
 import { MypagePage } from './mypage.page';
+import { RouterModule } from '@angular/router';
+import { MenuModule } from '../../components/menu/menu.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MypagePageRoutingModule
+    RouterModule,
+    MenuModule,
+    MypagePageRoutingModule,
   ],
-  declarations: [MypagePage]
+  declarations: [MypagePage],
 })
 export class MypagePageModule {}
