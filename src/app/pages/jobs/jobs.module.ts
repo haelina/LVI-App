@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { WorkforcePageRoutingModule } from './workforce-routing.module';
+import { JobsPageRoutingModule } from './jobs-routing.module';
 
-import { WorkforcePage } from './workforce.page';
-import { MenuModule } from '../menu/menu.module';
+import { JobsPage } from './jobs.page';
 import { RouterModule } from '@angular/router';
+import { MenuModule } from '../../components/menu/menu.module';
 
 @NgModule({
   imports: [
@@ -17,8 +17,8 @@ import { RouterModule } from '@angular/router';
     IonicModule,
     MenuModule,
     RouterModule,
-    WorkforcePageRoutingModule,
+    JobsPageRoutingModule,
   ],
-  declarations: [WorkforcePage],
+  declarations: [JobsPage],
 })
-export class WorkforcePageModule {}
+export class JobsPageModule {}

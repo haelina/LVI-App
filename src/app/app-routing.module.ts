@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { WorkforcePageModule } from './workforce/workforce.module';
-import { WorkforcePage } from './workforce/workforce.page';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./menu/menu.module').then((m) => m.MenuModule),
+    loadChildren: () =>
+      import('./components/menu/menu.module').then((m) => m.MenuModule),
   },
   {
     path: 'home',
@@ -16,12 +15,14 @@ const routes: Routes = [
   {
     path: 'workforce',
     loadChildren: () =>
-      import('./workforce/workforce.module').then((m) => m.WorkforcePageModule),
+      import('./pages/workforce/workforce.module').then(
+        (m) => m.WorkforcePageModule
+      ),
   },
   {
     path: 'jobs',
     loadChildren: () =>
-      import('./jobs/jobs.module').then((m) => m.JobsPageModule),
+      import('./pages/jobs/jobs.module').then((m) => m.JobsPageModule),
   },
 ];
 
