@@ -38,12 +38,17 @@ export class LoginPage implements OnInit {
   async login() {
     const loading = await this.loadingController.create();
     loading.present();
-    const user = await this.authService.login(this.credentials.value);
-    await loading.dismiss();
+    try {
+      const user = await this.authService.login(this.credentials.value);
+      await loading.dismiss();
 
-    if (user) {
-      this.router.navigateByUrl('/mypage', { replaceUrl: true });
-    } else {
+      if (user) {
+        this.router.navigateByUrl('/mypage', { replaceUrl: true });
+      } else {
+        this.showAlert('Login failed', 'Please try again!');
+      }
+    } catch (err) {
+      await loading.dismiss();
       this.showAlert('Login failed', 'Please try again!');
     }
   }
