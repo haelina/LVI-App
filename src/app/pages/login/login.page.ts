@@ -61,4 +61,16 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
   }
+
+  async signWithGoogle() {
+    try {
+      console.log('starting google sign');
+      const user = await this.authService.googleLogin();
+      if (user) {
+        this.router.navigateByUrl('/mypage', { replaceUrl: true });
+      } else {
+        this.showAlert('Login failed', 'Please try again!');
+      }
+    } catch (err) {}
+  }
 }
