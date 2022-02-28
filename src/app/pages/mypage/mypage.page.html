@@ -1,5 +1,70 @@
 <app-menu></app-menu>
 
-<ion-content>
-  <ion-title>mypage</ion-title>
+<ion-content class="ion-padding">
+  <h1>mypage</h1>
+  <p>{{auth.currentUser.email}}</p>
+  <ion-accordion-group>
+    <ion-accordion value="omatTiedot">
+      <ion-item slot="header">
+        <ion-label>Omat tiedot</ion-label>
+      </ion-item>
+      <ion-list slot="content">
+        <form>
+          <ion-item>
+            <ion-label>Yritys:</ion-label>
+            <ion-input type="text" value="Esimerkki Oy"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Etunimi:</ion-label>
+            <ion-input type="text" value="Jaakko"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Sukunimi:</ion-label>
+            <ion-input type="text" value="Mikkonen"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Osoite:</ion-label>
+            <ion-input type="text" value="Kuusipolku 251"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Postinumero:</ion-label>
+            <ion-input type="number" value="37500"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Postitoimip.:</ion-label>
+            <ion-input type="text" value="Lempäälä"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Puhelin:</ion-label>
+            <ion-input type="text" value="+35840 5552438"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Email:</ion-label>
+            <ion-input type="email" value="example@esim.fi"></ion-input>
+          </ion-item>
+          <ion-button color="medium">Tallenna</ion-button>
+        </form>
+      </ion-list>
+    </ion-accordion>
+    <ion-accordion value="omaTyonhaku">
+      <ion-item slot="header">
+        <ion-label>Oma työnhaku</ion-label>
+      </ion-item>
+      <ion-list slot="content">
+        <ion-item>
+          <ion-label>Omat työnhaut tässä</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-accordion>
+    <ion-accordion value="omatUrakat">
+      <ion-item slot="header">
+        <ion-label>Omat urakat</ion-label>
+      </ion-item>
+      <ion-list slot="content">
+        <ion-item>
+          <ion-label>Urakat tässä:</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-accordion>
+  </ion-accordion-group>
 </ion-content>
