@@ -24,12 +24,10 @@
     </ion-buttons>
     <ion-title>LVI-App</ion-title>
     <ion-buttons slot="end">
-      <ion-icon
-        name="log-out-outline"
-        size="large"
-        [routerLink]="['/login']"
-        routerDirection="root"
-      ></ion-icon>
+      <ion-button (click)="logout()"
+        ><ion-icon name="log-out-outline" size="large"></ion-icon
+      ></ion-button>
+
       <ion-icon
         name="person-circle-outline"
         size="large"
