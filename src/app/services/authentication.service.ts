@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
   signOut,
+  getAuth,
 } from '@angular/fire/auth';
 
 @Injectable({
@@ -35,6 +38,15 @@ export class AuthenticationService {
   }
 
   logout() {
-    return signOut(this.auth);
+    const auth = getAuth();
+    return signOut(auth);
+  }
+
+  googleLogin() {
+    const provider = new GoogleAuthProvider();
+    console.log('Google login in auth service');
+    const user = signInWithPopup(this.auth, provider);
+    console.log(user);
+    return user;
   }
 }
