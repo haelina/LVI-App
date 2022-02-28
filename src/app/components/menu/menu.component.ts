@@ -15,6 +15,10 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {}
 
+  isMyPage() {
+    return this.router.url === '/mypage';
+  }
+
   async logout() {
     await this.authService.logout();
     this.router.navigateByUrl('/login', { replaceUrl: true });

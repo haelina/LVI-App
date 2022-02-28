@@ -22,7 +22,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>LVI-App</ion-title>
+    <ion-title>Työdiileri</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="logout()"
         ><ion-icon name="log-out-outline" size="large"></ion-icon
@@ -31,8 +31,11 @@
       <ion-icon
         name="person-circle-outline"
         size="large"
-        color="tertiary"
-        class="ion-padding"
+        [class]="
+          isMyPage()
+            ? 'ion-padding myicon_highlight'
+            : 'ion-padding myicon_inactive'
+        "
         [routerLink]="['/mypage']"
         routerDirection="root"
       ></ion-icon>
