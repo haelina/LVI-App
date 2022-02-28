@@ -27,6 +27,16 @@
         >Password needs to have minimum 6 letters</ion-note
       >
     </ion-item>
-    <ion-button expand="full" type="submit">Login</ion-button>
+    <ion-button expand="full" type="submit" [disabled]="!credentials.valid"
+      >Login</ion-button
+    >
   </form>
+  <ion-button
+    expand="full"
+    type="button"
+    class="ion-margin-top"
+    [routerLink]="['/register']"
+    routerDirection="root"
+    >Create account</ion-button
+  >
 </ion-content>

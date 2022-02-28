@@ -35,19 +35,6 @@ export class LoginPage implements OnInit {
     });
   }
 
-  async register() {
-    const loading = await this.loadingController.create();
-    loading.present();
-    const user = await this.authService.register(this.credentials.value);
-    await loading.dismiss();
-
-    if (user) {
-      this.router.navigateByUrl('/mypage', { replaceUrl: true });
-    } else {
-      this.showAlert('Registration failed', 'Please try again!');
-    }
-  }
-
   async login() {
     const loading = await this.loadingController.create();
     loading.present();
