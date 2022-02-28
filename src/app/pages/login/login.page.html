@@ -1,4 +1,32 @@
-<ion-content>
-  <ion-title>Please login</ion-title>
+<ion-header>
+  <ion-title>Login page</ion-title>
+</ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="credentials" (ngSubmit)="login()">
+    <ion-item class="ion-margin-bottom">
+      <ion-input
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+      ></ion-input>
+      <ion-note
+        slot="error"
+        *ngIf="(email.dirty || email.touched) && email.errors"
+        >Email is invalid</ion-note
+      >
+    </ion-item>
+    <ion-item class="ion-margin-bottom">
+      <ion-input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      ></ion-input>
+      <ion-note
+        slot="error"
+        *ngIf="(password.dirty ||password.touched) && password.errors"
+        >Password needs to have minimum 6 letters</ion-note
+      >
+    </ion-item>
+    <ion-button expand="full" type="submit">Login</ion-button>
+  </form>
 </ion-content>
-<ion-button [routerLink]="['/mypage']" routerDirection="root">Login</ion-button>
