@@ -27,11 +27,13 @@ const routes: Routes = [
       import('./pages/workforce/workforce.module').then(
         (m) => m.WorkforcePageModule
       ),
+    ...canActivate(redirectUnauthorizedToLogin),
   },
   {
     path: 'jobs',
     loadChildren: () =>
       import('./pages/jobs/jobs.module').then((m) => m.JobsPageModule),
+    ...canActivate(redirectUnauthorizedToLogin),
   },
   {
     path: 'register',
@@ -39,6 +41,7 @@ const routes: Routes = [
       import('./pages/register/register.module').then(
         (m) => m.RegisterPageModule
       ),
+    ...canActivate(redirectLoggedInToMypage),
   },
   {
     path: 'mypage',
@@ -52,6 +55,7 @@ const routes: Routes = [
       import('./pages/trainees/trainees.module').then(
         (m) => m.TraineesPageModule
       ),
+    ...canActivate(redirectUnauthorizedToLogin),
   },
 ];
 
