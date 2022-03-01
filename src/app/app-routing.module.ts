@@ -57,6 +57,12 @@ const routes: Routes = [
       ),
     ...canActivate(redirectUnauthorizedToLogin),
   },
+  {
+    path: 'addnew',
+    loadChildren: () =>
+      import('./pages/addnew/addnew.module').then((m) => m.AddnewPageModule),
+    ...canActivate(redirectUnauthorizedToLogin),
+  },
 ];
 
 @NgModule({
