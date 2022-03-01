@@ -1,12 +1,14 @@
 <app-menu></app-menu>
 
 <ion-content class="ion-padding">
-  <h1>mypage</h1>
-  <p>{{auth.currentUser.email}}</p>
-  <ion-accordion-group>
+  <div class="add-button-div ion-margin">
+    <ion-icon name="add-outline" class="add-button"></ion-icon>
+  </div>
+  <ion-accordion-group class="accordion-element">
     <ion-accordion value="omatTiedot">
       <ion-item slot="header">
-        <ion-label>Omat tiedot</ion-label>
+        <ion-icon name="home-outline" class="ion-padding-end"></ion-icon>
+        <ion-label class="ion-text-uppercase">Omat tiedot</ion-label>
       </ion-item>
       <ion-list slot="content">
         <form>
@@ -40,14 +42,20 @@
           </ion-item>
           <ion-item>
             <ion-label>Email:</ion-label>
-            <ion-input type="email" value="example@esim.fi"></ion-input>
+            <ion-input
+              type="email"
+              value="{{auth.currentUser.email}}"
+            ></ion-input>
           </ion-item>
-          <ion-button color="medium">Tallenna</ion-button>
+          <ion-item>
+            <ion-button color="medium">Tallenna</ion-button>
+          </ion-item>
         </form>
       </ion-list>
     </ion-accordion>
     <ion-accordion value="omaTyonhaku">
       <ion-item slot="header">
+        <ion-icon name="hammer-outline" class="ion-padding-end"></ion-icon>
         <ion-label>Oma työnhaku</ion-label>
       </ion-item>
       <ion-list slot="content">
@@ -58,6 +66,7 @@
     </ion-accordion>
     <ion-accordion value="omatUrakat">
       <ion-item slot="header">
+        <ion-icon name="construct-outline" class="ion-padding-end"></ion-icon>
         <ion-label>Omat urakat</ion-label>
       </ion-item>
       <ion-list slot="content">
