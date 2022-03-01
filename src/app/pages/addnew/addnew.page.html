@@ -1,9 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>addnew</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-menu></app-menu>>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+  <h1>Lisää uusi työ tai työnhaku</h1>
+  <form>
+    <ion-list>
+      <ion-radio-group>
+        <ion-list-header>
+          <ion-label> Etsin: </ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Työtä</ion-label>
+          <ion-radio slot="start" mode="md" value="worker"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Tekijää</ion-label>
+          <ion-radio slot="start" mode="md" value="job"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Harjoittelupaikkaa</ion-label>
+          <ion-radio slot="start" mode="md" value="trainee"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </form>
 </ion-content>
