@@ -2,7 +2,12 @@
 
 <ion-content class="ion-padding">
   <div class="add-button-div ion-margin">
-    <ion-icon name="add-outline" class="add-button"></ion-icon>
+    <ion-icon
+      name="add-outline"
+      class="add-button"
+      [routerLink]="['/addnew']"
+      routerDirection="root"
+    ></ion-icon>
   </div>
   <ion-accordion-group class="accordion-element">
     <ion-accordion value="omatTiedot">
