@@ -35,32 +35,33 @@
           placeholder="Valitse kunnat"
           cancelText="Peruuta"
           okText="OK"
+          (ionChange)="addLocations($event)"
         >
-          <ion-select-option value="akaa">Akaa</ion-select-option>
-          <ion-select-option value="hameenkyro">Hämeenkyrö</ion-select-option>
-          <ion-select-option value="ikaalinen">Ikaalinen</ion-select-option>
-          <ion-select-option value="juupajoki">Juupajoki</ion-select-option>
-          <ion-select-option value="kangasala">Kangasala</ion-select-option>
-          <ion-select-option value="kihnio">Kihniö</ion-select-option>
-          <ion-select-option value="kuhmoinen">Kuhmoinen</ion-select-option>
-          <ion-select-option value="lempaala">Lempäälä</ion-select-option>
-          <ion-select-option value="mantta-vilppula"
+          <ion-select-option value="Akaa">Akaa</ion-select-option>
+          <ion-select-option value="Hämeenkyrö">Hämeenkyrö</ion-select-option>
+          <ion-select-option value="Ikaalinen">Ikaalinen</ion-select-option>
+          <ion-select-option value="Juupajoki">Juupajoki</ion-select-option>
+          <ion-select-option value="Kangasala">Kangasala</ion-select-option>
+          <ion-select-option value="Kihniö">Kihniö</ion-select-option>
+          <ion-select-option value="Kuhmoinen">Kuhmoinen</ion-select-option>
+          <ion-select-option value="Lempäälä">Lempäälä</ion-select-option>
+          <ion-select-option value="Mänttä-Vilppula"
             >Mänttä-Vilppula</ion-select-option
           >
-          <ion-select-option value="nokia">Nokia</ion-select-option>
-          <ion-select-option value="orivesi">Orivesi</ion-select-option>
-          <ion-select-option value="parkano">Parkano</ion-select-option>
-          <ion-select-option value="pirkkala">Pirkkala</ion-select-option>
-          <ion-select-option value="punkalaidun">Punkalaidun</ion-select-option>
-          <ion-select-option value="palkane">Pälkäne</ion-select-option>
+          <ion-select-option value="Nokia">Nokia</ion-select-option>
+          <ion-select-option value="Orivesi">Orivesi</ion-select-option>
+          <ion-select-option value="Parkano">Parkano</ion-select-option>
+          <ion-select-option value="Pirkkala">Pirkkala</ion-select-option>
+          <ion-select-option value="Punkalaidun">Punkalaidun</ion-select-option>
+          <ion-select-option value="Pälkäne">Pälkäne</ion-select-option>
           <ion-select-option value="Ruovesi">Ruovesi</ion-select-option>
-          <ion-select-option value="sastamala">Sastamala</ion-select-option>
-          <ion-select-option value="tampere">Tampere</ion-select-option>
-          <ion-select-option value="urjala">Urjala</ion-select-option>
-          <ion-select-option value="valkeakoski">Valkeakoski</ion-select-option>
-          <ion-select-option value="vesilahti">Vesilahti</ion-select-option>
-          <ion-select-option value="virrat">Virrat</ion-select-option>
-          <ion-select-option value="ylojarvi">Ylöjärvi</ion-select-option>
+          <ion-select-option value="Sastamala">Sastamala</ion-select-option>
+          <ion-select-option value="Tampere">Tampere</ion-select-option>
+          <ion-select-option value="Urjala">Urjala</ion-select-option>
+          <ion-select-option value="Valkeakoski">Valkeakoski</ion-select-option>
+          <ion-select-option value="Vesilahti">Vesilahti</ion-select-option>
+          <ion-select-option value="Virrat">Virrat</ion-select-option>
+          <ion-select-option value="Ylöjärvi">Ylöjärvi</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-list-header class="ion-no-padding">
@@ -92,9 +93,18 @@
         <!--<ion-item class="icon-bg">
           <ion-icon name="time-outline"></ion-icon>
         </ion-item>-->
-        <ion-input class="ion-text-center" type="time"> </ion-input>
-        <ion-text class="ion-padding">-</ion-text
-        ><ion-input class="ion-text-center" type="time"></ion-input>
+        <ion-input
+          class="ion-text-center"
+          type="time"
+          (ionChange)="getStartTime($event.target.value)"
+        >
+        </ion-input>
+        <ion-text class="ion-padding">-</ion-text>
+        <ion-input
+          class="ion-text-center"
+          type="time"
+          (ionChange)="getEndTime($event.target.value)"
+        ></ion-input>
       </ion-item>
       <ion-list-header class="ion-no-padding"
         ><ion-label>Muut huomiot:</ion-label>

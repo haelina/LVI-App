@@ -11,9 +11,13 @@ export class AddnewPage implements OnInit {
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
 
   dateValue = '';
-  dateFormatted = '';
+
+  dateFormatted = format(new Date(), 'dd.MM.yyyy');
   datepickerVisible = false;
   entryType: '';
+  locations: [];
+  startTime: '';
+  endTime: '';
 
   constructor(public routerOutlet: IonRouterOutlet) {}
 
@@ -32,5 +36,20 @@ export class AddnewPage implements OnInit {
   addEntryType(selected) {
     this.entryType = selected.detail.value;
     console.log(this.entryType);
+  }
+
+  addLocations(selected) {
+    this.locations = selected.detail.value;
+    console.log(this.locations);
+  }
+
+  getStartTime(start) {
+    this.startTime = start;
+    console.log(this.startTime);
+  }
+
+  getEndTime(end) {
+    this.endTime = end;
+    console.log(this.endTime);
   }
 }
