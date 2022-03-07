@@ -1,0 +1,6 @@
+{
+	"appId": "fi.lvifirma.lviapp",
+	"appName": "LVI-App",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
