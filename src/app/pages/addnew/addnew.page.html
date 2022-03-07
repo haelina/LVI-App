@@ -3,7 +3,7 @@
   <h1>Lisää uusi työ tai työnhaku</h1>
   <form>
     <ion-list lines="none">
-      <ion-radio-group>
+      <ion-radio-group (ionChange)="addEntryType($event)">
         <ion-list-header class="ion-no-padding">
           <ion-label> Etsin: </ion-label>
         </ion-list-header>

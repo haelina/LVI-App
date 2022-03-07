@@ -13,6 +13,7 @@ export class AddnewPage implements OnInit {
   dateValue = '';
   dateFormatted = '';
   datepickerVisible = false;
+  entryType: '';
 
   constructor(public routerOutlet: IonRouterOutlet) {}
 
@@ -26,5 +27,10 @@ export class AddnewPage implements OnInit {
     this.dateValue = datePicked;
     this.dateFormatted = this.formatDate(datePicked);
     this.datepickerVisible = false;
+  }
+
+  addEntryType(selected) {
+    this.entryType = selected.detail.value;
+    console.log(this.entryType);
   }
 }
