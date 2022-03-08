@@ -17,11 +17,12 @@ export class AddnewPage implements OnInit {
 
   dateFormatted = format(new Date(), 'dd.MM.yyyy');
   datepickerVisible = false;
-  entryType: '';
-  locations: [];
-  startTime: '';
-  endTime: '';
-  details: '';
+  entryType: string;
+  locations: string[];
+  startTime: string;
+  endTime: string;
+  address: string;
+  details: string;
 
   constructor(
     //public routerOutlet: IonRouterOutlet,
@@ -47,24 +48,28 @@ export class AddnewPage implements OnInit {
     console.log(this.entryType);
   }
 
-  addLocations(selected) {
-    this.locations = selected.detail.value;
+  addLocations(selected: string[]) {
+    this.locations = selected;
     console.log(this.locations);
   }
 
-  getStartTime(start) {
+  getStartTime(start: string) {
     this.startTime = start;
     console.log(this.startTime);
   }
 
-  getEndTime(end) {
+  getEndTime(end: string) {
     this.endTime = end;
     console.log(this.endTime);
   }
 
-  getDetails(given) {
+  getDetails(given: string) {
     this.details = given;
     console.log(this.details);
+  }
+
+  addAddress(given: string) {
+    this.address = given;
   }
 
   async sendNewWorkerEntry() {
@@ -75,9 +80,30 @@ export class AddnewPage implements OnInit {
       startTime: this.startTime,
       endTime: this.endTime,
       details: this.details,
-      isTrainee: this.entryType.toString() === 'trainee' ? true : false,
+      isTrainee: this.entryType === 'trainee' ? true : false,
     });
     console.log('New worker entry sent');
+  }
+
+  async sendNewJobEntry() {
+    await this.fireStore.addJob({
+      uid: this.authService.currentUserUid(),
+      locations: this.locations,
+      date: this.dateFormatted,
+      startTime: this.startTime,
+      endTime: this.endTime,
+      details: this.details,
+      address: this.address,
+    });
+    console.log('New job entry sent');
+  }
+
+  sendNewEntry() {
+    if (this.entryType === 'job') {
+      this.sendNewJobEntry();
+    } else {
+      this.sendNewWorkerEntry();
+    }
     this.router.navigateByUrl('/mypage');
   }
 }

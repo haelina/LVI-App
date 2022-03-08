@@ -35,7 +35,7 @@
           placeholder="Valitse kunnat"
           cancelText="Peruuta"
           okText="OK"
-          (ionChange)="addLocations($event)"
+          (ionChange)="addLocations($event.target.value)"
         >
           <ion-select-option value="Akaa">Akaa</ion-select-option>
           <ion-select-option value="Hämeenkyrö">Hämeenkyrö</ion-select-option>
@@ -106,6 +106,17 @@
           (ionChange)="getEndTime($event.target.value)"
         ></ion-input>
       </ion-item>
+      <ion-list-header *ngIf="entryType==='job'" class="ion-no-padding"
+        ><ion-label>Osoite/sijainti:</ion-label></ion-list-header
+      >
+      <ion-item *ngIf="entryType==='job'"
+        ><ion-input
+          class="ion-padding-horizontal"
+          type="text"
+          placeholder="Anna osoite tai sijainti"
+          (ionChange)="addAddress($event.target.value)"
+        ></ion-input
+      ></ion-item>
       <ion-list-header class="ion-no-padding"
         ><ion-label>Muut huomiot:</ion-label>
       </ion-list-header>
@@ -126,7 +137,7 @@
           slots="end"
           >Peruuta</ion-button
         >
-        <ion-button size="large" (click)="sendNewWorkerEntry()" slots="end"
+        <ion-button size="large" (click)="sendNewEntry()" slots="end"
           >Tallenna</ion-button
         >
       </div>
