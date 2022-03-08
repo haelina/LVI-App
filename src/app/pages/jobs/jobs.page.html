@@ -1,2 +1,24 @@
 <app-menu></app-menu>>
-<ion-content><ion-title> Työlistaus </ion-title></ion-content>
+<ion-content>
+  <h1 class="ion-padding-start">Työt</h1>
+  <ion-card class="ion-no-padding" *ngFor="let job of jobsData"
+    ><ion-card-header
+      ><ion-card-subtitle
+        >Klo {{job.startTime}} - {{job.endTime}}</ion-card-subtitle
+      ><ion-card-title>{{job.date}} </ion-card-title>
+    </ion-card-header>
+
+    <ion-item lines="none">
+      <ion-icon name="information-circle" slot="end"></ion-icon>
+      <ion-label class="ion-text-wrap">
+        <ion-button *ngFor="let location of job.locations"
+          >{{location}}</ion-button
+        ></ion-label
+      >
+    </ion-item>
+    <ion-label class="ion-padding-start ion-text-wrap"
+      >Osoite/sijainti: {{job.address}}</ion-label
+    >
+    <ion-card-content>{{job.details}}</ion-card-content>
+  </ion-card>
+</ion-content>
