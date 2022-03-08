@@ -4,6 +4,7 @@ import { format, parseISO } from 'date-fns';
 import { IonRouterOutlet } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 @Component({
   selector: 'app-addnew',
   templateUrl: './addnew.page.html',
@@ -25,7 +26,8 @@ export class AddnewPage implements OnInit {
   constructor(
     //public routerOutlet: IonRouterOutlet,
     private router: Router,
-    private fireStore: FirestoreService
+    private fireStore: FirestoreService,
+    private authService: AuthenticationService
   ) {}
 
   ngOnInit() {}
@@ -66,7 +68,15 @@ export class AddnewPage implements OnInit {
   }
 
   async sendNewWorkerEntry() {
-    await this.fireStore.addWorker();
+    await this.fireStore.addWorker({
+      uid: this.authService.currentUserUid(),
+      locations: this.locations,
+      date: this.dateFormatted,
+      startTime: this.startTime,
+      endTime: this.endTime,
+      details: this.details,
+      isTrainee: false,
+    });
     console.log('New worker entry sent');
     this.router.navigateByUrl('/mypage');
   }
