@@ -1,4 +1,4 @@
-interface Workerentry {
+interface WorkerEntry {
   uid?: string;
   locations: string[];
   date: string;
@@ -8,4 +8,4 @@ interface Workerentry {
   isTrainee: boolean;
 }
 
-export default Workerentry;
+export default WorkerEntry;
