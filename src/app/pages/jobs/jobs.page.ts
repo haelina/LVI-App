@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import JobEntry from 'src/app/interfaces/JobEntry';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-jobs',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./jobs.page.scss'],
 })
 export class JobsPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  jobsData: JobEntry[];
+  constructor(private firestore: FirestoreService) {
+    this.firestore.getJobs().subscribe((res) => {
+      this.jobsData = res;
+      console.log(this.jobsData);
+    });
   }
 
+  ngOnInit() {}
 }
