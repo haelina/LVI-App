@@ -75,7 +75,7 @@ export class AddnewPage implements OnInit {
       startTime: this.startTime,
       endTime: this.endTime,
       details: this.details,
-      isTrainee: false,
+      isTrainee: this.entryType.toString() === 'trainee' ? true : false,
     });
     console.log('New worker entry sent');
     this.router.navigateByUrl('/mypage');
