@@ -27,4 +27,9 @@ export class FirestoreService {
     const workerRef = collection(this.firestore, 'workers');
     return collectionData(workerRef) as Observable<WorkerEntry[]>;
   }
+
+  getJobs(): Observable<JobEntry[]> {
+    const jobsRef = collection(this.firestore, 'jobs');
+    return collectionData(jobsRef) as Observable<JobEntry[]>;
+  }
 }
