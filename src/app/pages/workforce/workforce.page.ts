@@ -10,7 +10,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class WorkforcePage implements OnInit {
   workerData: WorkerEntry[];
   constructor(private firestore: FirestoreService) {
-    this.firestore.getWorkers().subscribe((res) => {
+    this.firestore.getWorkers(false).subscribe((res) => {
       this.workerData = res;
       console.log(this.workerData);
     });
