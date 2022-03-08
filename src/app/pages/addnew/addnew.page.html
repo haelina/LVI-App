@@ -126,11 +126,7 @@
           slots="end"
           >Peruuta</ion-button
         >
-        <ion-button
-          size="large"
-          [routerLink]="['/mypage']"
-          routerDirection="root"
-          slots="end"
+        <ion-button size="large" (click)="sendNewWorkerEntry()" slots="end"
           >Tallenna</ion-button
         >
       </div>

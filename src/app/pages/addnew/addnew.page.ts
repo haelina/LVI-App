@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonDatetime } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { IonRouterOutlet } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { FirestoreService } from 'src/app/services/firestore.service';
 @Component({
   selector: 'app-addnew',
   templateUrl: './addnew.page.html',
@@ -20,7 +22,11 @@ export class AddnewPage implements OnInit {
   endTime: '';
   details: '';
 
-  constructor(public routerOutlet: IonRouterOutlet) {}
+  constructor(
+    //public routerOutlet: IonRouterOutlet,
+    private router: Router,
+    private fireStore: FirestoreService
+  ) {}
 
   ngOnInit() {}
 
@@ -57,5 +63,11 @@ export class AddnewPage implements OnInit {
   getDetails(given) {
     this.details = given;
     console.log(this.details);
+  }
+
+  async sendNewWorkerEntry() {
+    await this.fireStore.addWorker();
+    console.log('New worker entry sent');
+    this.router.navigateByUrl('/mypage');
   }
 }
