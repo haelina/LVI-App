@@ -49,4 +49,9 @@ export class AuthenticationService {
     console.log(user);
     return user;
   }
+
+  currentUserUid() {
+    const auth = getAuth();
+    return auth.currentUser.uid;
+  }
 }
