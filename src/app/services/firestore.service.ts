@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, addDoc } from '@firebase/firestore';
+import { collection, addDoc, where, query } from '@firebase/firestore';
 import { AuthenticationService } from './authentication.service';
 import { collectionData, Firestore } from '@angular/fire/firestore';
 import WorkerEntry from '../interfaces/Workerentry';
@@ -23,8 +23,11 @@ export class FirestoreService {
     await addDoc(collection(this.firestore, 'jobs'), job);
   }
 
-  getWorkers(): Observable<WorkerEntry[]> {
-    const workerRef = collection(this.firestore, 'workers');
+  getWorkers(isTrainee: boolean): Observable<WorkerEntry[]> {
+    const workerRef = query(
+      collection(this.firestore, 'workers'),
+      where('isTrainee', '==', isTrainee)
+    );
     return collectionData(workerRef) as Observable<WorkerEntry[]>;
   }
 
