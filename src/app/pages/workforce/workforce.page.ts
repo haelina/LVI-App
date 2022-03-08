@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import WorkerEntry from 'src/app/interfaces/Workerentry';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-workforce',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./workforce.page.scss'],
 })
 export class WorkforcePage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  workerData: WorkerEntry[];
+  constructor(private firestore: FirestoreService) {
+    this.firestore.getWorkers().subscribe((res) => {
+      this.workerData = res;
+      console.log(this.workerData);
+    });
   }
 
+  ngOnInit() {}
 }

@@ -1,2 +1,20 @@
 <app-menu></app-menu>
-<ion-content> <ion-title>Workforce page</ion-title> </ion-content>
+<ion-content class="ion-padding">
+  <h1>Työn etsijät</h1>
+  <ion-card *ngFor="let worker of workerData"
+    ><ion-card-header
+      ><ion-card-subtitle
+        >{{worker.startTime}} - {{worker.endTime}}</ion-card-subtitle
+      ><ion-card-title>{{worker.date}} </ion-card-title>
+    </ion-card-header>
+    <ion-item lines="none">
+      <ion-icon name="information-circle" slot="end"></ion-icon>
+      <ion-label class="ion-text-wrap">
+        <ion-button *ngFor="let location of worker.locations"
+          >{{location}}</ion-button
+        ></ion-label
+      >
+    </ion-item>
+    <ion-card-content>{{worker.details}}</ion-card-content>
+  </ion-card>
+</ion-content>
