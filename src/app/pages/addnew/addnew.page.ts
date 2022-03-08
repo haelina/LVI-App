@@ -18,6 +18,7 @@ export class AddnewPage implements OnInit {
   locations: [];
   startTime: '';
   endTime: '';
+  details: '';
 
   constructor(public routerOutlet: IonRouterOutlet) {}
 
@@ -51,5 +52,10 @@ export class AddnewPage implements OnInit {
   getEndTime(end) {
     this.endTime = end;
     console.log(this.endTime);
+  }
+
+  getDetails(given) {
+    this.details = given;
+    console.log(this.details);
   }
 }

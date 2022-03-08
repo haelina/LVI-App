@@ -114,6 +114,7 @@
           class="ion-padding-horizontal"
           autoGrow="true"
           placeholder="Anna halutessasi lisätietoa.."
+          (ionChange)="getDetails($event.target.value)"
         ></ion-textarea>
       </ion-item>
       <div class="ion-margin-top ion-text-right ion-padding-end">
