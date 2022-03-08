@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from '@firebase/firestore';
 import { AuthenticationService } from './authentication.service';
-import { getFirestore } from 'firebase/firestore';
+import { Firestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirestoreService {
-  db = getFirestore();
-  constructor(private authService: AuthenticationService) {}
+  constructor(
+    private authService: AuthenticationService,
+    private firestore: Firestore
+  ) {}
 
   async addWorker() {
-    await addDoc(collection(this.db, 'workers'), {
+    await addDoc(collection(this.firestore, 'workers'), {
       uid: this.authService.currentUserUid(),
       locations: ['Akaa', 'Lempäälä', 'Tampere'],
       date: '8.3.2022',
