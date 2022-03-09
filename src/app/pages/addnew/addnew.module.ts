@@ -11,6 +11,8 @@ import { AddnewPage } from './addnew.page';
 import { RouterModule } from '@angular/router';
 import { MenuModule } from '../../components/menu/menu.module';
 
+import { CalendarModule } from 'ion2-calendar';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,6 +21,7 @@ import { MenuModule } from '../../components/menu/menu.module';
     IonicModule,
     RouterModule,
     MenuModule,
+    CalendarModule,
     AddnewPageRoutingModule,
   ],
   declarations: [AddnewPage],
