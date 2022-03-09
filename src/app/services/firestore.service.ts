@@ -6,6 +6,7 @@ import {
   query,
   doc,
   setDoc,
+  getDoc,
 } from '@firebase/firestore';
 import { AuthenticationService } from './authentication.service';
 import { collectionData, Firestore } from '@angular/fire/firestore';
@@ -86,5 +87,11 @@ export class FirestoreService {
       doc(this.firestore, 'userdetails', this.authService.currentUserUid()),
       details
     );
+  }
+
+  async getUserDetail(uid: string) {
+    const userdetailRef = doc(this.firestore, 'userdetails', uid);
+    const userdetailData = await getDoc(userdetailRef);
+    return userdetailData.data();
   }
 }
