@@ -10,6 +10,8 @@ import { WorkforcePage } from './workforce.page';
 import { MenuModule } from '../../components/menu/menu.module';
 import { RouterModule } from '@angular/router';
 
+import { CalendarModule } from 'ion2-calendar';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +19,7 @@ import { RouterModule } from '@angular/router';
     IonicModule,
     MenuModule,
     RouterModule,
+    CalendarModule,
     WorkforcePageRoutingModule,
   ],
   declarations: [WorkforcePage],
