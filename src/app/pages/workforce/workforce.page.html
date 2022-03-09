@@ -3,10 +3,12 @@
   <h1 class="ion-padding-start">Tekijät</h1>
   <ion-card class="ion-no-padding" *ngFor="let worker of workerData"
     ><ion-card-header
-      ><ion-card-subtitle
-        >{{worker.startTime}} - {{worker.endTime}}</ion-card-subtitle
-      ><ion-card-title>{{worker.date}} </ion-card-title>
+      ><ion-card-subtitle>Tekijän nimi / Esimerkki Oy</ion-card-subtitle>
     </ion-card-header>
+    <ion-item line="none">
+      <ion-calendar [options]="getOptions(worker.dates)" readonly="true">
+      </ion-calendar>
+    </ion-item>
     <ion-item lines="none">
       <ion-icon name="information-circle" slot="end"></ion-icon>
       <ion-label class="ion-text-wrap">
