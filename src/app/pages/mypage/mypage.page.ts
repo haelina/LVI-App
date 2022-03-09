@@ -22,23 +22,56 @@ export class MypagePage implements OnInit {
     //console.log(auth.currentUser);
     //console.log(this.router.url);
   }
+  get company() {
+    return this.myData.get('company');
+  }
 
-  async ngOnInit() {
+  get firstName() {
+    return this.myData.get('firstName');
+  }
+
+  get lastName() {
+    return this.myData.get('lastName');
+  }
+
+  get address() {
+    return this.myData.get('address');
+  }
+
+  get zip() {
+    return this.myData.get('zip');
+  }
+
+  get city() {
+    return this.myData.get('city');
+  }
+
+  get phone() {
+    return this.myData.get('phone');
+  }
+
+  get email() {
+    return this.myData.get('email');
+  }
+
+  ngOnInit() {
     //await getMyData();
     this.myData = this.formbuilder.group({
       company: ['Esimerkki Oy', [Validators.minLength(5)]],
-      firstName: ['', [Validators.required, Validators.minLength(2)]],
-      lastName: ['', [Validators.required, Validators.minLength(2)]],
-      address: ['', [Validators.minLength(5)]],
-      zip: ['', [Validators.maxLength(5), Validators.maxLength(5)]],
-      city: ['', [Validators.minLength(2)]],
+      firstName: ['Jaakko', [Validators.required, Validators.minLength(2)]],
+      lastName: ['Mikkonen', [Validators.required, Validators.minLength(2)]],
+      address: ['Kuusitie 666', [Validators.minLength(5)]],
+      zip: ['36100', [Validators.minLength(5), Validators.maxLength(5)]],
+      city: ['Lempäälä', [Validators.minLength(2)]],
       phone: [
-        '',
-        [Validators.required],
-        Validators.minLength(5),
-        Validators.maxLength(20),
+        '+358451288435',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(20),
+        ],
       ],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['hanna@test.co', [Validators.required, Validators.email]],
     });
   }
 

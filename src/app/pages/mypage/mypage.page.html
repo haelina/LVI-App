@@ -19,67 +19,35 @@
         <form [formGroup]="myData" (ngSubmit)="updateMyData()">
           <ion-item>
             <ion-label>Yritys:</ion-label>
-            <ion-input
-              type="text"
-              formControlName="company"
-              value="Esimerkki Oy"
-            ></ion-input>
+            <ion-input type="text" formControlName="company"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Etunimi:</ion-label>
-            <ion-input
-              type="text"
-              formControlName="firstName"
-              value="Jaakko"
-            ></ion-input>
+            <ion-input type="text" formControlName="firstName"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Sukunimi:</ion-label>
-            <ion-input
-              type="text"
-              formControlName="lastName"
-              value="Mikkonen"
-            ></ion-input>
+            <ion-input type="text" formControlName="lastName"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Osoite:</ion-label>
-            <ion-input
-              type="text"
-              formControlName="address"
-              value="Kuusipolku 251"
-            ></ion-input>
+            <ion-input type="text" formControlName="address"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Postinumero:</ion-label>
-            <ion-input
-              type="number"
-              formControlName="zip"
-              value="37500"
-            ></ion-input>
+            <ion-input type="text" formControlName="zip"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Postitoimip.:</ion-label>
-            <ion-input
-              type="text"
-              formControlName="city"
-              value="Lempäälä"
-            ></ion-input>
+            <ion-input type="text" formControlName="city"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Puhelin:</ion-label>
-            <ion-input
-              type="text"
-              formControlName="phone"
-              value="+35840 5552438"
-            ></ion-input>
+            <ion-input type="text" formControlName="phone"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Email:</ion-label>
-            <ion-input
-              type="email"
-              formControlName="email"
-              value="{{auth.currentUser.email}}"
-            ></ion-input>
+            <ion-input type="email" formControlName="email"></ion-input>
           </ion-item>
           <ion-item>
             <ion-button color="medium" type="submit">Tallenna</ion-button>
