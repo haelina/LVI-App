@@ -3,7 +3,7 @@ interface Userdetails {
   firstName: string;
   lastName: string;
   company: string;
-  streetAddress: string;
+  address: string;
   zip: string;
   city: string;
   phone: string;
