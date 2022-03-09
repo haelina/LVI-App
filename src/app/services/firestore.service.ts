@@ -81,7 +81,7 @@ export class FirestoreService {
    *
    * @param details - details to be sent to firestore
    */
-  async addUser(details: Userdetails) {
+  async addUserdetail(details: Userdetails) {
     await setDoc(
       doc(this.firestore, 'userdetails', this.authService.currentUserUid()),
       details
