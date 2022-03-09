@@ -25,6 +25,11 @@ export class WorkforcePage implements OnInit {
   ngOnInit() {}
   getOptions(dates): CalendarComponentOptions {
     const calOptions: CalendarComponentOptions = {
+      weekStart: 1,
+      monthFormat: 'MMMM YYYY',
+      showMonthPicker: false,
+      weekdays: ['SU', 'MA', 'TI', 'KE', 'TO', 'PE', 'LA'],
+      color: 'primary',
       daysConfig: [],
     };
     dates.forEach((d) => {
