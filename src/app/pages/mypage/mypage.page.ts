@@ -3,6 +3,7 @@ import { Auth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-mypage',
@@ -13,8 +14,8 @@ export class MypagePage implements OnInit {
   myData: FormGroup;
 
   constructor(
-    private auth: Auth,
     private router: Router,
+    private firestore: FirestoreService,
     private formbuilder: FormBuilder,
     private loadingController: LoadingController,
     private alertController: AlertController
@@ -76,7 +77,8 @@ export class MypagePage implements OnInit {
   }
 
   updateMyData() {
-    console.log('clicked submit');
-    console.log(this.myData.value);
+    //console.log('clicked submit');
+    //console.log(this.myData.value);
+    this.firestore.addUserdetail(this.myData.value);
   }
 }
