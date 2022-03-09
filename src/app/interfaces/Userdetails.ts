@@ -1,5 +1,5 @@
 interface Userdetails {
-  uid?: number;
+  uid?: string;
   firstName: string;
   lastName: string;
   company: string;
