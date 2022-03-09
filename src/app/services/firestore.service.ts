@@ -9,7 +9,7 @@ import {
   getDoc,
 } from '@firebase/firestore';
 import { AuthenticationService } from './authentication.service';
-import { collectionData, Firestore } from '@angular/fire/firestore';
+import { collectionData, docData, Firestore } from '@angular/fire/firestore';
 import WorkerEntry from '../interfaces/Workerentry';
 import JobEntry from '../interfaces/JobEntry';
 import { Observable } from 'rxjs';
@@ -89,9 +89,17 @@ export class FirestoreService {
     );
   }
 
-  async getUserDetail(uid: string) {
-    const userdetailRef = doc(this.firestore, 'userdetails', uid);
-    const userdetailData = await getDoc(userdetailRef);
-    return userdetailData.data();
+  /**
+   * Get userdetails of currently logged in user with user's uid.
+   *
+   * @returns Observable that implements Userdetails interface
+   */
+  getUserDetail(): Observable<Userdetails> {
+    const userdetailRef = doc(
+      this.firestore,
+      'userdetails',
+      this.authService.currentUserUid()
+    );
+    return docData(userdetailRef) as Observable<Userdetails>;
   }
 }
