@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonDatetime } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
-import { IonRouterOutlet } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CalendarComponentOptions } from 'ion2-calendar';
+import * as moment from 'moment';
 @Component({
   selector: 'app-addnew',
   templateUrl: './addnew.page.html',
@@ -16,7 +17,7 @@ export class AddnewPage implements OnInit {
   dateValue = '';
 
   dateFormatted = format(new Date(), 'dd.MM.yyyy');
-  datepickerVisible = false;
+  datepickerVisible = true;
   entryType: string;
   locations: string[];
   startTime: string;
@@ -24,24 +25,25 @@ export class AddnewPage implements OnInit {
   address: string;
   details: string;
 
+  //ion2-calendar things
+  dateMulti: string[];
+  type: 'string';
+  optionsMulti: CalendarComponentOptions = {
+    pickMode: 'multi',
+    weekStart: 1,
+    monthFormat: 'MMMM YYYY',
+    showMonthPicker: false,
+    weekdays: ['SU', 'MA', 'TI', 'KE', 'TO', 'PE', 'LA'],
+    color: 'primary',
+  };
+
   constructor(
-    //public routerOutlet: IonRouterOutlet,
     private router: Router,
     private fireStore: FirestoreService,
     private authService: AuthenticationService
   ) {}
 
   ngOnInit() {}
-
-  formatDate(value: string) {
-    return format(parseISO(value), 'dd.MM.yyyy');
-  }
-
-  handleDatepick(datePicked) {
-    this.dateValue = datePicked;
-    this.dateFormatted = this.formatDate(datePicked);
-    this.datepickerVisible = false;
-  }
 
   addEntryType(selected) {
     this.entryType = selected.detail.value;
@@ -73,12 +75,13 @@ export class AddnewPage implements OnInit {
   }
 
   async sendNewWorkerEntry() {
+    const formattedDates: string[] = [];
+    this.dateMulti.forEach((el) => formattedDates.push(moment(el).format()));
+    console.log(formattedDates);
     await this.fireStore.addWorker({
       uid: this.authService.currentUserUid(),
       locations: this.locations,
-      date: this.dateFormatted,
-      startTime: this.startTime,
-      endTime: this.endTime,
+      dates: formattedDates,
       details: this.details,
       isTrainee: this.entryType === 'trainee' ? true : false,
     });
@@ -105,5 +108,11 @@ export class AddnewPage implements OnInit {
       this.sendNewWorkerEntry();
     }
     this.router.navigateByUrl('/mypage');
+  }
+
+  onChange(event) {
+    this.dateMulti.forEach((element) => {
+      console.log(moment(element).format());
+    });
   }
 }
