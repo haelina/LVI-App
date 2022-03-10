@@ -14,6 +14,7 @@ import WorkerEntry from '../interfaces/Workerentry';
 import JobEntry from '../interfaces/JobEntry';
 import { Observable } from 'rxjs';
 import Userdetails from '../interfaces/Userdetails';
+import TraineeEntry from '../interfaces/TraineeEntry';
 
 @Injectable({
   providedIn: 'root',
@@ -134,6 +135,38 @@ export class FirestoreService {
     if (docSnap.exists()) {
       console.log('Document data:', docSnap.data());
       return docSnap.data() as WorkerEntry;
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!');
+      return null;
+    }
+  }
+
+  /**
+   * This adds a document with logged in user's uid to collection trainees.
+   * Each trainee has one document in trainees collection.
+   * Document gets overwritten every time when new updates are sent.
+   *
+   * @param trainee - Data to be sent to database.
+   */
+  async addTrainee(trainee: TraineeEntry) {
+    await setDoc(
+      doc(this.firestore, 'trainees', this.authService.currentUserUid()),
+      trainee
+    );
+  }
+
+  async getTrainee(): Promise<TraineeEntry | null> {
+    const docRef = doc(
+      this.firestore,
+      'trainees',
+      this.authService.currentUserUid()
+    );
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log('Document data:', docSnap.data());
+      return docSnap.data() as TraineeEntry;
     } else {
       // doc.data() will be undefined in this case
       console.log('No such document!');
