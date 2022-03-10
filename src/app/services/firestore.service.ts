@@ -122,4 +122,22 @@ export class FirestoreService {
       return null;
     }
   }
+
+  async getWorker(): Promise<WorkerEntry | null> {
+    const docRef = doc(
+      this.firestore,
+      'workers',
+      this.authService.currentUserUid()
+    );
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log('Document data:', docSnap.data());
+      return docSnap.data() as WorkerEntry;
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!');
+      return null;
+    }
+  }
 }
