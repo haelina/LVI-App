@@ -94,6 +94,7 @@ export class FirestoreService {
    *
    * @returns Observable that implements Userdetails interface
    */
+  /* Currently not used by anything
   getUserDetail(): Observable<Userdetails> {
     const userdetailRef = doc(
       this.firestore,
@@ -101,5 +102,24 @@ export class FirestoreService {
       this.authService.currentUserUid()
     );
     return docData(userdetailRef) as Observable<Userdetails>;
+  }
+  */
+
+  async getUser(): Promise<Userdetails | null> {
+    const docRef = doc(
+      this.firestore,
+      'userdetails',
+      this.authService.currentUserUid()
+    );
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log('Document data:', docSnap.data());
+      return docSnap.data() as Userdetails;
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!');
+      return null;
+    }
   }
 }
