@@ -9,6 +9,7 @@ import { MypagePageRoutingModule } from './mypage-routing.module';
 import { MypagePage } from './mypage.page';
 import { RouterModule } from '@angular/router';
 import { MenuModule } from '../../components/menu/menu.module';
+import { CalendarModule } from 'ion2-calendar';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { MenuModule } from '../../components/menu/menu.module';
     RouterModule,
     MenuModule,
     ReactiveFormsModule,
+    CalendarModule,
     MypagePageRoutingModule,
   ],
   declarations: [MypagePage],
