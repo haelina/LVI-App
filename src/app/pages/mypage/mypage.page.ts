@@ -22,6 +22,7 @@ export class MypagePage implements OnInit {
   workDetailsLoading = true;
   noWorkdetails = true;
   myWorkSearch: FormGroup;
+  workerData: WorkerEntry;
 
   optionsMulti: CalendarComponentOptions = {
     pickMode: 'multi',
@@ -148,14 +149,21 @@ export class MypagePage implements OnInit {
   }
 
   async getWorkerDetails() {
+    const found = await this.firestore.getWorker();
+    if (found) {
+      this.workerData = found;
+      this.initializeWorkSearchForm(this.workerData);
+    } else {
+      this.initializeWorkSearchForm(null);
+    }
+    /*
     this.initializeWorkSearchForm({
       details: 'joo',
       dates: ['2022-03-11T00:00:00+02:00'],
       locations: ['Akaa'],
       isTrainee: false,
     });
-    //this.initializeWorkSearchForm(null);
-    this.workDetailsLoading = false;
+    */
   }
 
   ngOnInit() {
