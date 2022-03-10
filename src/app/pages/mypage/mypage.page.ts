@@ -8,6 +8,7 @@ import Userdetails from 'src/app/interfaces/Userdetails';
 import WorkerEntry from 'src/app/interfaces/Workerentry';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import * as moment from 'moment';
+import TraineeEntry from 'src/app/interfaces/TraineeEntry';
 
 @Component({
   selector: 'app-mypage',
@@ -20,9 +21,13 @@ export class MypagePage implements OnInit {
   isLoading = true;
   newUser = true;
   workDetailsLoading = true;
-  noWorkdetails = true;
+  //noWorkdetails = true;
   myWorkSearch: FormGroup;
   workerData: WorkerEntry;
+
+  traineeData: FormGroup;
+  traineeDetails: TraineeEntry;
+  traineeDetailsLoading = true;
 
   optionsMulti: CalendarComponentOptions = {
     pickMode: 'multi',
@@ -44,6 +49,8 @@ export class MypagePage implements OnInit {
     //console.log(auth.currentUser);
     //console.log(this.router.url);
   }
+
+  /*
   get company() {
     return this.myData.get('company');
   }
@@ -75,6 +82,7 @@ export class MypagePage implements OnInit {
   get email() {
     return this.myData.get('email');
   }
+  */
 
   initializeForm(userDetails: Userdetails | null) {
     this.myData = this.formbuilder.group({
@@ -136,6 +144,15 @@ export class MypagePage implements OnInit {
     this.workDetailsLoading = false;
   }
 
+  initializeTraineeForm(values: TraineeEntry | null) {
+    this.traineeData = this.formbuilder.group({
+      locations: [values ? values.locations : []],
+      timing: [values ? values.timing : ''],
+      details: [values ? values.details : ''],
+    });
+    this.traineeDetailsLoading = false;
+  }
+
   async getUserDetails() {
     const found = await this.firestore.getUser();
     if (found) {
@@ -156,14 +173,16 @@ export class MypagePage implements OnInit {
     } else {
       this.initializeWorkSearchForm(null);
     }
-    /*
-    this.initializeWorkSearchForm({
-      details: 'joo',
-      dates: ['2022-03-11T00:00:00+02:00'],
-      locations: ['Akaa'],
-      isTrainee: false,
-    });
-    */
+  }
+
+  async getTraineeDetails() {
+    const found = await this.firestore.getTrainee();
+    if (found) {
+      this.traineeDetails = found;
+      this.initializeTraineeForm(this.traineeDetails);
+    } else {
+      this.initializeTraineeForm(null);
+    }
   }
 
   ngOnInit() {

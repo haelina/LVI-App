@@ -170,10 +170,80 @@
         <ion-icon name="happy-outline" class="ion-padding-end"></ion-icon>
         <ion-label>Etsi harjoittelupaikkaa</ion-label>
       </ion-item>
-      <ion-list slot="content">
-        <ion-item>
-          <ion-label>Harjoittelupaikkailmoitus:</ion-label>
-        </ion-item>
+      <ion-list slot="content" lines="none">
+        <form
+          *ngIf="!traineeDetailsLoading"
+          [formGroup]="traineeData"
+          (ngSubmit)="updateTraineeData()"
+        >
+          <ion-list-header>
+            <ion-label>Paikkakunnat: </ion-label>
+          </ion-list-header>
+          <ion-item class="white-bg ion-no-padding">
+            <ion-item class="icon-bg">
+              <ion-icon size="default" name="location-outline"></ion-icon>
+            </ion-item>
+            <ion-select
+              formControlName="locations"
+              multiple="true"
+              class="ion-padding-start"
+              placeholder="Valitse kunnat"
+              cancelText="Peruuta"
+              okText="OK"
+            >
+              <ion-select-option value="Akaa">Akaa</ion-select-option>
+              <ion-select-option value="Hämeenkyrö"
+                >Hämeenkyrö</ion-select-option
+              >
+              <ion-select-option value="Ikaalinen">Ikaalinen</ion-select-option>
+              <ion-select-option value="Juupajoki">Juupajoki</ion-select-option>
+              <ion-select-option value="Kangasala">Kangasala</ion-select-option>
+              <ion-select-option value="Kihniö">Kihniö</ion-select-option>
+              <ion-select-option value="Kuhmoinen">Kuhmoinen</ion-select-option>
+              <ion-select-option value="Lempäälä">Lempäälä</ion-select-option>
+              <ion-select-option value="Mänttä-Vilppula"
+                >Mänttä-Vilppula</ion-select-option
+              >
+              <ion-select-option value="Nokia">Nokia</ion-select-option>
+              <ion-select-option value="Orivesi">Orivesi</ion-select-option>
+              <ion-select-option value="Parkano">Parkano</ion-select-option>
+              <ion-select-option value="Pirkkala">Pirkkala</ion-select-option>
+              <ion-select-option value="Punkalaidun"
+                >Punkalaidun</ion-select-option
+              >
+              <ion-select-option value="Pälkäne">Pälkäne</ion-select-option>
+              <ion-select-option value="Ruovesi">Ruovesi</ion-select-option>
+              <ion-select-option value="Sastamala">Sastamala</ion-select-option>
+              <ion-select-option value="Tampere">Tampere</ion-select-option>
+              <ion-select-option value="Urjala">Urjala</ion-select-option>
+              <ion-select-option value="Valkeakoski"
+                >Valkeakoski</ion-select-option
+              >
+              <ion-select-option value="Vesilahti">Vesilahti</ion-select-option>
+              <ion-select-option value="Virrat">Virrat</ion-select-option>
+              <ion-select-option value="Ylöjärvi">Ylöjärvi</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-list-header
+            ><ion-label>Muut huomiot:</ion-label>
+          </ion-list-header>
+          <ion-item class="ion-no-padding">
+            <ion-textarea
+              formControlName="details"
+              class="ion-padding"
+              autoGrow="true"
+              placeholder="Anna halutessasi lisätietoa.."
+            ></ion-textarea>
+          </ion-item>
+          <div class="ion-margin-top ion-text-right ion-padding-end">
+            <ion-button fill="clear" size="default" slots="end"
+              >Poista haku</ion-button
+            >
+            <ion-button size="default" type="submit" slots="end"
+              >Tallenna</ion-button
+            >
+          </div>
+        </form>
       </ion-list>
     </ion-accordion>
   </ion-accordion-group>
