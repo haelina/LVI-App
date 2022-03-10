@@ -176,6 +176,7 @@ export class MypagePage implements OnInit {
   }
 
   async getTraineeDetails() {
+    //const found = null;
     const found = await this.firestore.getTrainee();
     if (found) {
       this.traineeDetails = found;
@@ -188,6 +189,7 @@ export class MypagePage implements OnInit {
   ngOnInit() {
     this.getUserDetails();
     this.getWorkerDetails();
+    this.getTraineeDetails();
   }
 
   updateMyData() {
@@ -206,5 +208,10 @@ export class MypagePage implements OnInit {
     console.log('updating work search');
     console.log(this.myWorkSearch.value);
     this.firestore.addWorker(this.myWorkSearch.value);
+  }
+
+  updateTraineeData() {
+    console.log('trainee data sent');
+    this.firestore.addTrainee(this.traineeData.value);
   }
 }
