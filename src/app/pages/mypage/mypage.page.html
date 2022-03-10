@@ -67,7 +67,11 @@
         <ion-label>Oma työnhaku</ion-label>
       </ion-item>
       <ion-list slot="content" lines="none">
-        <form [formGroup]="myWorkSearch" (ngSubmit)="updateWorkSearch()">
+        <form
+          *ngIf="!workDetailsLoading"
+          [formGroup]="myWorkSearch"
+          (ngSubmit)="updateWorkSearch()"
+        >
           <ion-list-header>
             <ion-label>Paikkakunnat: </ion-label>
           </ion-list-header>
