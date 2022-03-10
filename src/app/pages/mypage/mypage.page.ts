@@ -14,6 +14,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class MypagePage implements OnInit {
   myData: FormGroup;
   userdetails: Userdetails;
+  isLoading = true;
 
   constructor(
     private router: Router,
@@ -58,56 +59,44 @@ export class MypagePage implements OnInit {
   }
 
   async fetchUserdetail() {
-    this.firestore.getUserDetail().subscribe((res) => console.log(res));
-    /*
-    this.myData = this.formbuilder.group({
-      company: [this.userdetails.company, [Validators.minLength(5)]],
-      firstName: [
-        this.userdetails.firstName,
-        [Validators.required, Validators.minLength(2)],
-      ],
-      lastName: [
-        this.userdetails.lastName,
-        [Validators.required, Validators.minLength(2)],
-      ],
-      address: [this.userdetails.address, [Validators.minLength(5)]],
-      zip: [
-        this.userdetails.zip,
-        [Validators.minLength(5), Validators.maxLength(5)],
-      ],
-      city: [this.userdetails.city, [Validators.minLength(2)]],
-      phone: [
-        this.userdetails.phone,
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(20),
+    await this.firestore.getUserDetail().subscribe((res) => {
+      this.userdetails = res;
+
+      this.myData = this.formbuilder.group({
+        company: [this.userdetails.company, [Validators.minLength(5)]],
+        firstName: [
+          this.userdetails.firstName,
+          [Validators.required, Validators.minLength(2)],
         ],
-      ],
-      email: [this.userdetails.email, [Validators.required, Validators.email]],
+        lastName: [
+          this.userdetails.lastName,
+          [Validators.required, Validators.minLength(2)],
+        ],
+        address: [this.userdetails.address, [Validators.minLength(5)]],
+        zip: [
+          this.userdetails.zip,
+          [Validators.minLength(5), Validators.maxLength(5)],
+        ],
+        city: [this.userdetails.city, [Validators.minLength(2)]],
+        phone: [
+          this.userdetails.phone,
+          [
+            Validators.required,
+            Validators.minLength(5),
+            Validators.maxLength(20),
+          ],
+        ],
+        email: [
+          this.userdetails.email,
+          [Validators.required, Validators.email],
+        ],
+      });
+      this.isLoading = false;
     });
-    */
   }
 
   ngOnInit() {
     this.fetchUserdetail();
-    this.myData = this.formbuilder.group({
-      company: ['', [Validators.minLength(5)]],
-      firstName: ['', [Validators.required, Validators.minLength(2)]],
-      lastName: ['', [Validators.required, Validators.minLength(2)]],
-      address: ['', [Validators.minLength(5)]],
-      zip: ['', [Validators.minLength(5), Validators.maxLength(5)]],
-      city: ['', [Validators.minLength(2)]],
-      phone: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(20),
-        ],
-      ],
-      email: ['', [Validators.required, Validators.email]],
-    });
   }
 
   updateMyData() {

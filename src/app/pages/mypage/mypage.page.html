@@ -16,7 +16,11 @@
         <ion-label class="ion-text-uppercase">Omat tiedot</ion-label>
       </ion-item>
       <ion-list slot="content" lines="none">
-        <form [formGroup]="myData" (ngSubmit)="updateMyData()">
+        <form
+          *ngIf="!isLoading"
+          [formGroup]="myData"
+          (ngSubmit)="updateMyData()"
+        >
           <ion-item>
             <ion-label>Yritys:</ion-label>
             <ion-input type="text" formControlName="company"></ion-input>
