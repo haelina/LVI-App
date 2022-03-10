@@ -186,7 +186,7 @@
             <ion-select
               formControlName="locations"
               multiple="true"
-              class="ion-padding-start"
+              class="ion-padding-horizontal"
               placeholder="Valitse kunnat"
               cancelText="Peruuta"
               okText="OK"
@@ -224,25 +224,25 @@
               <ion-select-option value="Ylöjärvi">Ylöjärvi</ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-list-header
-            ><ion-label>Muut huomiot:</ion-label>
-          </ion-list-header>
-          <ion-item class="ion-no-padding">
+          <ion-item>
+            <ion-label position="stacked">Esittely:</ion-label>
             <ion-textarea
               formControlName="details"
-              class="ion-padding"
               autoGrow="true"
-              placeholder="Anna halutessasi lisätietoa.."
+              rows="3"
+              placeholder="Kerro lisää itsestäsi ja harjoittelun yksityiskohdista.."
             ></ion-textarea>
           </ion-item>
-          <div class="ion-margin-top ion-text-right ion-padding-end">
-            <ion-button fill="clear" size="default" slots="end"
-              >Poista haku</ion-button
-            >
-            <ion-button size="default" type="submit" slots="end"
-              >Tallenna</ion-button
-            >
-          </div>
+          <ion-item>
+            <div class="ion-margin-top ion-text-right ion-padding-end">
+              <ion-button fill="clear" size="default" slots="end"
+                >Poista haku</ion-button
+              >
+              <ion-button size="default" type="submit" slots="end"
+                >Tallenna</ion-button
+              >
+            </div>
+          </ion-item>
         </form>
       </ion-list>
     </ion-accordion>
