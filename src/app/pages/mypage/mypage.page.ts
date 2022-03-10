@@ -3,8 +3,11 @@ import { Auth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { CalendarComponentOptions } from 'ion2-calendar';
 import Userdetails from 'src/app/interfaces/Userdetails';
+import WorkerEntry from 'src/app/interfaces/Workerentry';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-mypage',
@@ -16,6 +19,18 @@ export class MypagePage implements OnInit {
   userdetails: Userdetails;
   isLoading = true;
   newUser = true;
+  workDetailsLoading = true;
+  noWorkdetails = true;
+  myWorkSearch: FormGroup;
+
+  optionsMulti: CalendarComponentOptions = {
+    pickMode: 'multi',
+    weekStart: 1,
+    monthFormat: 'MMMM YYYY',
+    showMonthPicker: false,
+    weekdays: ['SU', 'MA', 'TI', 'KE', 'TO', 'PE', 'LA'],
+    color: 'primary',
+  };
 
   constructor(
     private router: Router,
@@ -60,45 +75,6 @@ export class MypagePage implements OnInit {
     return this.myData.get('email');
   }
 
-  /*
-  async fetchUserdetail() {
-    await this.firestore.getUserDetail().subscribe((res) => {
-      this.userdetails = res;
-
-      this.myData = this.formbuilder.group({
-        company: [this.userdetails.company, [Validators.minLength(5)]],
-        firstName: [
-          this.userdetails.firstName,
-          [Validators.required, Validators.minLength(2)],
-        ],
-        lastName: [
-          this.userdetails.lastName,
-          [Validators.required, Validators.minLength(2)],
-        ],
-        address: [this.userdetails.address, [Validators.minLength(5)]],
-        zip: [
-          this.userdetails.zip,
-          [Validators.minLength(5), Validators.maxLength(5)],
-        ],
-        city: [this.userdetails.city, [Validators.minLength(2)]],
-        phone: [
-          this.userdetails.phone,
-          [
-            Validators.required,
-            Validators.minLength(5),
-            Validators.maxLength(20),
-          ],
-        ],
-        email: [
-          this.userdetails.email,
-          [Validators.required, Validators.email],
-        ],
-      });
-      this.isLoading = false;
-    });
-  }
-  */
-
   initializeForm(userDetails: Userdetails | null) {
     this.myData = this.formbuilder.group({
       company: [
@@ -138,6 +114,27 @@ export class MypagePage implements OnInit {
     this.isLoading = false;
   }
 
+  initializeWorkSearchForm(values: WorkerEntry | null) {
+    this.myWorkSearch = this.formbuilder.group({
+      locations: [values ? values.locations : []],
+      dates: [values ? values.dates : []],
+      details: [values ? values.details : ''],
+      isTrainee: [false],
+    });
+    if (values) {
+      this.optionsMulti.daysConfig = [];
+      values.dates.forEach((date) => {
+        const obj = {
+          date,
+          marked: true,
+          cssClass: 'worker-calendar-marker',
+        };
+        this.optionsMulti.daysConfig.push();
+      });
+    }
+    this.workDetailsLoading = false;
+  }
+
   async getUserDetails() {
     const found = await this.firestore.getUser();
     if (found) {
@@ -150,41 +147,37 @@ export class MypagePage implements OnInit {
     }
   }
 
+  async getWorkerDetails() {
+    this.initializeWorkSearchForm({
+      details: 'joo',
+      dates: ['2022-03-11T00:00:00+02:00'],
+      locations: ['Akaa'],
+      isTrainee: false,
+    });
+    //this.initializeWorkSearchForm(null);
+    this.workDetailsLoading = false;
+  }
+
   ngOnInit() {
     this.getUserDetails();
-    /*
-    console.log(this.firestore.getUser());
-    if (this.newUser) {
-      this.myData = this.formbuilder.group({
-        company: ['', [Validators.minLength(5)]],
-        firstName: ['', [Validators.required, Validators.minLength(2)]],
-        lastName: ['', [Validators.required, Validators.minLength(2)]],
-        address: ['', [Validators.minLength(5)]],
-        zip: ['', [Validators.minLength(5), Validators.maxLength(5)]],
-        city: ['', [Validators.minLength(2)]],
-        phone: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(5),
-            Validators.maxLength(20),
-          ],
-        ],
-        email: ['', [Validators.required, Validators.email]],
-      });
-    } else {
-      this.fetchUserdetail();
-    }
-
-    */
+    this.getWorkerDetails();
   }
 
   updateMyData() {
-    //console.log('clicked submit');
-
     this.firestore.addUserdetail(this.myData.value);
     if (this.newUser) {
       this.newUser = false;
     }
+  }
+
+  updateWorkSearch() {
+    const formattedDates: string[] = [];
+    this.myWorkSearch.value.dates.forEach((date) =>
+      formattedDates.push(moment(date).format())
+    );
+    this.myWorkSearch.value.dates = formattedDates;
+    console.log('updating work search');
+    console.log(this.myWorkSearch.value);
+    this.firestore.addWorker(this.myWorkSearch.value);
   }
 }
