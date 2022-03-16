@@ -10,6 +10,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import * as moment from 'moment';
 import TraineeEntry from 'src/app/interfaces/TraineeEntry';
 import { ToastController } from '@ionic/angular';
+import JobEntry from 'src/app/interfaces/JobEntry';
 
 @Component({
   selector: 'app-mypage',
@@ -21,10 +22,16 @@ export class MypagePage implements OnInit {
   userdetails: Userdetails;
   isLoading = true;
   newUser = true;
-  workDetailsLoading = true;
-  noWorkdetails = true;
+
   myWorkSearch: FormGroup;
   workerData: WorkerEntry;
+  workDetailsLoading = true;
+  noWorkdetails = true;
+
+  jobForm: FormGroup;
+  jobData: JobEntry;
+  jobDetailsLoading = true;
+  noJobdetails = true;
 
   traineeData: FormGroup;
   traineeDetails: TraineeEntry;
@@ -147,6 +154,24 @@ export class MypagePage implements OnInit {
     this.workDetailsLoading = false;
   }
 
+  initializeJobForm(job: JobEntry | null) {
+    this.jobForm = this.formbuilder.group({
+      uid: [this.auth.currentUser.uid],
+      locations: [job ? job.locations : []],
+      timing: [
+        job ? job.timing : '',
+        [Validators.required, Validators.minLength(2)],
+      ],
+      address: [job ? job.address : '', [Validators.minLength(2)]],
+      duration: [job ? job.duration : '', [Validators.minLength(2)]],
+      details: [
+        job ? job.details : '',
+        [Validators.required, Validators.minLength(2)],
+      ],
+    });
+    this.jobDetailsLoading = false;
+  }
+
   initializeTraineeForm(values: TraineeEntry | null) {
     this.traineeData = this.formbuilder.group({
       locations: [values ? values.locations : [], [Validators.required]],
@@ -188,6 +213,19 @@ export class MypagePage implements OnInit {
     }
   }
 
+  async getJobDetails() {
+    const found = null;
+    //const found = await this.firestore.getJobs();
+    if (found) {
+      this.jobData = found;
+      this.noJobdetails = false;
+      this.initializeWorkSearchForm(this.workerData);
+    } else {
+      this.noJobdetails = true;
+      this.initializeJobForm(null);
+    }
+  }
+
   async getTraineeDetails() {
     //const found = null;
     const found = await this.firestore.getTrainee();
@@ -204,7 +242,13 @@ export class MypagePage implements OnInit {
   ngOnInit() {
     this.getUserDetails();
     this.getWorkerDetails();
+    this.getJobDetails();
     this.getTraineeDetails();
+  }
+
+  addJob() {
+    this.firestore.addJob(this.jobForm.value);
+    //this.getJobDetails();
   }
 
   updateMyData() {
