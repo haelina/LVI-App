@@ -150,7 +150,6 @@ export class MypagePage implements OnInit {
       locations: [values ? values.locations : [], [Validators.required]],
       timing: [
         values ? values.timing : '',
-        ,
         [Validators.required, Validators.minLength(5)],
       ],
       hasLicense: [values ? values.hasLicense : false],
