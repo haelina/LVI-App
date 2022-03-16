@@ -21,13 +21,14 @@ export class MypagePage implements OnInit {
   isLoading = true;
   newUser = true;
   workDetailsLoading = true;
-  //noWorkdetails = true;
+  noWorkdetails = true;
   myWorkSearch: FormGroup;
   workerData: WorkerEntry;
 
   traineeData: FormGroup;
   traineeDetails: TraineeEntry;
   traineeDetailsLoading = true;
+  noTraineedetails = true;
 
   optionsMulti: CalendarComponentOptions = {
     pickMode: 'multi',
@@ -166,13 +167,17 @@ export class MypagePage implements OnInit {
   }
 
   async getWorkerDetails() {
+    console.log('workerdetails: ' + this.noWorkdetails);
     const found = await this.firestore.getWorker();
     if (found) {
       this.workerData = found;
+      this.noWorkdetails = false;
       this.initializeWorkSearchForm(this.workerData);
     } else {
+      this.noWorkdetails = true;
       this.initializeWorkSearchForm(null);
     }
+    console.log('workerdetails: ' + this.noWorkdetails);
   }
 
   async getTraineeDetails() {
@@ -197,6 +202,7 @@ export class MypagePage implements OnInit {
     if (this.newUser) {
       this.newUser = false;
     }
+    this.getUserDetails();
   }
 
   updateWorkSearch() {
@@ -208,10 +214,13 @@ export class MypagePage implements OnInit {
     console.log('updating work search');
     console.log(this.myWorkSearch.value);
     this.firestore.addWorker(this.myWorkSearch.value);
+    this.workDetailsLoading = true;
+    this.getWorkerDetails();
   }
 
   updateTraineeData() {
     console.log('trainee data sent');
     this.firestore.addTrainee(this.traineeData.value);
+    this.getTraineeDetails();
   }
 }
