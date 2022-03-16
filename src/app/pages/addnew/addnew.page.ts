@@ -92,9 +92,11 @@ export class AddnewPage implements OnInit {
     await this.fireStore.addJob({
       uid: this.authService.currentUserUid(),
       locations: this.locations,
-      date: this.dateFormatted,
-      startTime: this.startTime,
-      endTime: this.endTime,
+      timing: '',
+      duration: '',
+      //date: this.dateFormatted,
+      //startTime: this.startTime,
+      //endTime: this.endTime,
       details: this.details,
       address: this.address,
     });
