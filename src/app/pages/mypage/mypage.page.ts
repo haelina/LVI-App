@@ -9,6 +9,7 @@ import WorkerEntry from 'src/app/interfaces/Workerentry';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import * as moment from 'moment';
 import TraineeEntry from 'src/app/interfaces/TraineeEntry';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mypage',
@@ -45,7 +46,8 @@ export class MypagePage implements OnInit {
     private formbuilder: FormBuilder,
     private loadingController: LoadingController,
     private alertController: AlertController,
-    private auth: Auth
+    private auth: Auth,
+    private toastController: ToastController
   ) {
     //console.log(auth.currentUser);
     //console.log(this.router.url);
@@ -222,6 +224,15 @@ export class MypagePage implements OnInit {
     console.log('updating work search');
     console.log(this.myWorkSearch.value);
     this.firestore.addWorker(this.myWorkSearch.value);
+    if (this.noWorkdetails) {
+      this.presentToastWithMessage(
+        'Onnea työn löytämiseen. Ilmoituksesi on lisätty Työdiileriin.'
+      );
+    } else {
+      this.presentToastWithMessage(
+        'Onnea työn löytämiseen. Ilmoituksesi on päivitetty Työdiileriin.'
+      );
+    }
     this.workDetailsLoading = true;
     this.getWorkerDetails();
   }
@@ -229,6 +240,36 @@ export class MypagePage implements OnInit {
   updateTraineeData() {
     console.log('trainee data sent');
     this.firestore.addTrainee(this.traineeData.value);
+    if (this.noTraineedetails) {
+      this.presentToastWithMessage(
+        'Onnea harjoittelupaikan hakuun. Ilmoituksesi on lisätty Työdiileriin.'
+      );
+    } else {
+      this.presentToastWithMessage(
+        'Onnea harjoittelupaikan hakuun. Ilmoituksesi on päivitetty Työdiileriin.'
+      );
+    }
+    this.traineeDetailsLoading = true;
     this.getTraineeDetails();
+  }
+
+  async presentToastWithMessage(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      color: 'danger',
+      icon: 'sparkles',
+      position: 'middle',
+      duration: 3000,
+      /*buttons: [
+        {
+          text: 'Ok!',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          },
+        },
+      ],*/
+    });
+    await toast.present();
   }
 }
