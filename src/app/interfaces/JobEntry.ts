@@ -1,10 +1,9 @@
 interface JobEntry {
   uid?: string;
   locations: string[];
-  date: string;
-  startTime: string;
-  endTime: string;
+  timing: string;
   address: string;
+  duration: string;
   details: string;
 }
 
