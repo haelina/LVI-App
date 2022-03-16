@@ -76,6 +76,20 @@ export class FirestoreService {
   }
 
   /**
+   * Get all job entries from user with user uid.
+   *
+   * @param userUid - user's uid value
+   * @returns array of job entries
+   */
+  getJobsFromUser(userUid: string): Observable<JobEntry[]> {
+    const jobRef = query(
+      collection(this.firestore, 'jobs'),
+      where('uid', '==', userUid)
+    );
+    return collectionData(jobRef) as Observable<JobEntry[]>;
+  }
+
+  /**
    * Add additional info about user to collection userdetails.
    * Adds a new document with logged in user's uid. Each user has
    * only one reference in collection userdetails and the data gets
