@@ -248,6 +248,10 @@ export class MypagePage implements OnInit {
 
   addJob() {
     this.firestore.addJob(this.jobForm.value);
+    this.presentToastWithMessage(
+      'Onnea tekijän löytämiseen. Ilmoituksesi on lisätty Työdiileriin.'
+    );
+    this.initializeJobForm(null);
     //this.getJobDetails();
   }
 
