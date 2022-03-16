@@ -4,3 +4,10 @@
 .myicon_inactive {
   color: white;
 }
+
+ion-menu {
+  --max-width: 80%;
+  --min-width: 100px;
+  --max-height: 30%;
+  --min-height: 200px;
+}
