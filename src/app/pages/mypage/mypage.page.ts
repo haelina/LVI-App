@@ -30,6 +30,7 @@ export class MypagePage implements OnInit {
 
   jobForm: FormGroup;
   jobData: JobEntry;
+  jobsData: JobEntry[];
   jobDetailsLoading = true;
   noJobdetails = true;
 
@@ -56,6 +57,12 @@ export class MypagePage implements OnInit {
     private auth: Auth,
     private toastController: ToastController
   ) {
+    this.firestore
+      .getJobsFromUser(this.auth.currentUser.uid)
+      .subscribe((res) => {
+        this.jobsData = res;
+        console.log(this.jobsData);
+      });
     //console.log(auth.currentUser);
     //console.log(this.router.url);
   }
@@ -244,6 +251,7 @@ export class MypagePage implements OnInit {
     this.getWorkerDetails();
     this.getJobDetails();
     this.getTraineeDetails();
+    //console.log(this.firestore.getJobsFromUser(this.auth.currentUser.uid));
   }
 
   addJob() {
