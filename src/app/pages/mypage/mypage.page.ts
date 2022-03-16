@@ -147,9 +147,18 @@ export class MypagePage implements OnInit {
 
   initializeTraineeForm(values: TraineeEntry | null) {
     this.traineeData = this.formbuilder.group({
-      locations: [values ? values.locations : []],
-      timing: [values ? values.timing : ''],
-      details: [values ? values.details : ''],
+      locations: [values ? values.locations : [], [Validators.required]],
+      timing: [
+        values ? values.timing : '',
+        ,
+        [Validators.required, Validators.minLength(5)],
+      ],
+      hasLicense: [values ? values.hasLicense : false],
+      hasCar: [values ? values.hasCar : false],
+      details: [
+        values ? values.details : '',
+        [Validators.required, Validators.minLength(5)],
+      ],
     });
     this.traineeDetailsLoading = false;
   }
@@ -167,7 +176,6 @@ export class MypagePage implements OnInit {
   }
 
   async getWorkerDetails() {
-    console.log('workerdetails: ' + this.noWorkdetails);
     const found = await this.firestore.getWorker();
     if (found) {
       this.workerData = found;
@@ -177,7 +185,6 @@ export class MypagePage implements OnInit {
       this.noWorkdetails = true;
       this.initializeWorkSearchForm(null);
     }
-    console.log('workerdetails: ' + this.noWorkdetails);
   }
 
   async getTraineeDetails() {
@@ -185,8 +192,10 @@ export class MypagePage implements OnInit {
     const found = await this.firestore.getTrainee();
     if (found) {
       this.traineeDetails = found;
+      this.noTraineedetails = false;
       this.initializeTraineeForm(this.traineeDetails);
     } else {
+      this.noTraineedetails = true;
       this.initializeTraineeForm(null);
     }
   }
