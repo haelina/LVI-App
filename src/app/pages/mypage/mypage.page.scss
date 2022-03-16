@@ -53,7 +53,10 @@ ion-list[slot="content"] {
 ion-input,
 ion-textarea {
   --background: white;
-  padding: 10px;
+}
+
+ion-textarea {
+  padding-left: 10px;
 }
 
 .icon-bg {
