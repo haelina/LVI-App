@@ -20,22 +20,22 @@
         <ion-label>Omat tiedot</ion-label>
       </ion-item>
       <ion-list slot="content" lines="none">
+        <ion-item>
+          <ion-text color="primary"><h2>Muokkaa omia tietoja</h2></ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-note color="tertiary">
+            Nämä tiedot näkyvät muille käyttäjille hakuilmoituksessa silloin kun
+            haet työtä tai harjoituspaikkaa tai kun tarjoat työtä muille
+          </ion-note>
+        </ion-item>
+        <div class="divider ion-margin"></div>
         <form
           *ngIf="!isLoading"
           [formGroup]="myData"
           (ngSubmit)="updateMyData()"
         >
           <ion-item>
-            <ion-text><h3>Muokkaa omia tietoja</h3></ion-text>
-          </ion-item>
-          <ion-item>
-            <ion-note color="tertiary">
-              Nämä tiedot näkyvät muille käyttäjille hakuilmoituksessa silloin
-              kun haet työtä tai harjoituspaikkaa tai kun tarjoat työtä muille
-            </ion-note>
-          </ion-item>
-
-          <ion-item class="ion-margin-top">
             <ion-label position="stacked">Yritys:</ion-label>
             <ion-input type="text" formControlName="company"></ion-input>
           </ion-item>
@@ -90,6 +90,24 @@
           [formGroup]="myWorkSearch"
           (ngSubmit)="updateWorkSearch()"
         >
+          <ion-item>
+            <ion-text color="primary">
+              <h2>
+                {{noWorkdetails? 'Aloita työnhaku': 'Muokkaa työnhakuasi'}}
+              </h2>
+            </ion-text></ion-item
+          ><ion-item>
+            <ion-note color="tertiary">
+              {{noWorkdetails? 'Sinulla ei ole vielä työnhakuilmoitusta. Täytä
+              työnhaun tiedot ja paina lopuksi Tallenna.': 'Sinulla on työnhaku
+              käynnissä. Muokkaa tarvittaessa työnhaun tietoja.'}}
+              <br /><br /><b>Tärkeää!</b> Tarkista myös, että yhteystietosi ovat
+              oikein Omat tiedot-välilehdellä. Siellä olevat yhteystiedot
+              tulevat hakemukseesi yhteystiedoiksi ja ne näkyvät muille
+              käyttäjille</ion-note
+            >
+          </ion-item>
+          <div class="divider ion-margin"></div>
           <ion-list-header>
             <ion-label>Paikkakunnat: </ion-label>
           </ion-list-header>
@@ -152,14 +170,14 @@
             </ion-calendar>
           </ion-item>
           <ion-list-header
-            ><ion-label>Muut huomiot:</ion-label>
+            ><ion-label>Lisätietoja:</ion-label>
           </ion-list-header>
           <ion-item>
             <ion-textarea
               formControlName="details"
               autoGrow="false"
               rows="5"
-              placeholder="Anna halutessasi lisätietoa.."
+              placeholder="Kerro lisää toivomistasi työtehtävistä ja osaamisestasi"
             ></ion-textarea>
           </ion-item>
           <div class="ion-text-right ion-padding">
@@ -203,10 +221,29 @@
           [formGroup]="traineeData"
           (ngSubmit)="updateTraineeData()"
         >
+          <ion-item>
+            <ion-text color="primary">
+              <h2>
+                {{noTraineedetails? 'Aloita harjoitteluhaku': 'Muokkaa
+                harjoitteluhakuasi'}}
+              </h2>
+            </ion-text></ion-item
+          ><ion-item>
+            <ion-note color="tertiary">
+              {{noTraineedetails? 'Sinulla ei ole vielä harjoitteluilmoitusta.
+              Täytä harjoittelun tiedot ja paina lopuksi Tallenna.': 'Sinulla on
+              harjoitteluhaku käynnissä. Muokkaa tarvittaessa haun tietoja. '}}
+              <br /><br /><b>Tärkeää!</b> Tarkista myös, että yhteystietosi ovat
+              oikein Omat tiedot-välilehdellä. Siellä olevat yhteystiedot
+              tulevat hakemukseesi yhteystiedoiksi ja ne näkyvät muille
+              käyttäjille</ion-note
+            >
+          </ion-item>
+          <div class="divider ion-margin"></div>
           <ion-list-header>
             <ion-label>Paikkakunnat: </ion-label>
           </ion-list-header>
-          <ion-item class="white-bg ion-no-padding">
+          <ion-item class="white-bg ion-no-padding ion-margin-horizontal">
             <ion-item class="icon-bg">
               <ion-icon size="default" name="location-outline"></ion-icon>
             </ion-item>
@@ -251,8 +288,19 @@
               <ion-select-option value="Ylöjärvi">Ylöjärvi</ion-select-option>
             </ion-select>
           </ion-item>
+          <ion-list-header>
+            <ion-label>Harjoittelun ajankohta: </ion-label>
+          </ion-list-header>
           <ion-item>
-            <ion-label position="stacked">Esittely:</ion-label>
+            <ion-input
+              formControlName="timing"
+              placeholder="Kerro tarkemmin milloin harjoittelu on"
+            ></ion-input>
+          </ion-item>
+          <ion-list-header>
+            <ion-label>Lisätietoja: </ion-label>
+          </ion-list-header>
+          <ion-item>
             <ion-textarea
               formControlName="details"
               autoGrow="false"
