@@ -37,7 +37,7 @@ ion-accordion.accordion-expanded ion-item[slot="header"] {
 ion-accordion.accordion-collapsing ion-item[slot="header"],
 ion-accordion.accordion-collapsed ion-item[slot="header"] {
   --color: black;
-  --ion-background-color: #f2f2f2;
+  --ion-background-color: white;
   ion-icon {
     color: black;
   }
@@ -46,14 +46,14 @@ ion-accordion.accordion-collapsed ion-item[slot="header"] {
 ion-list[slot="content"],
 ion-list[slot="content"] {
   margin: 5px;
-  border-radius: 15px;
+  border-radius: 15px 15px 0px 0px;
   --ion-background-color: #f2f2f2;
 }
 
 ion-input,
 ion-textarea {
   --background: white;
-  --padding-start: 5px;
+  padding: 10px;
 }
 
 .icon-bg {
@@ -63,4 +63,9 @@ ion-textarea {
 
 .white-bg {
   --background: white;
+}
+
+ion-note {
+  font-size: 14px;
+  text-align: justify;
 }
