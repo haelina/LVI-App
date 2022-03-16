@@ -61,7 +61,7 @@
         </form>
       </ion-list>
     </ion-accordion>
-    <ion-accordion value="omaTyonhaku">
+    <ion-accordion value="omaTyonhaku" class="ion-no-padding">
       <ion-item slot="header">
         <ion-icon name="hammer-outline" class="ion-padding-end"></ion-icon>
         <ion-label>Oma työnhaku</ion-label>
@@ -135,15 +135,15 @@
           <ion-list-header
             ><ion-label>Muut huomiot:</ion-label>
           </ion-list-header>
-          <ion-item class="ion-no-padding">
+          <ion-item>
             <ion-textarea
               formControlName="details"
-              class="ion-padding"
-              autoGrow="true"
+              autoGrow="false"
+              rows="5"
               placeholder="Anna halutessasi lisätietoa.."
             ></ion-textarea>
           </ion-item>
-          <div class="ion-margin-top ion-text-right ion-padding-end">
+          <div class="ion-text-right ion-padding">
             <ion-button fill="clear" size="default" slots="end"
               >Poista kaikki</ion-button
             >
@@ -228,21 +228,19 @@
             <ion-label position="stacked">Esittely:</ion-label>
             <ion-textarea
               formControlName="details"
-              autoGrow="true"
-              rows="3"
+              autoGrow="false"
+              rows="5"
               placeholder="Kerro lisää itsestäsi ja harjoittelun yksityiskohdista.."
             ></ion-textarea>
           </ion-item>
-          <ion-item>
-            <div class="ion-margin-top ion-text-right ion-padding-end">
-              <ion-button fill="clear" size="default" slots="end"
-                >Poista haku</ion-button
-              >
-              <ion-button size="default" type="submit" slots="end"
-                >Tallenna</ion-button
-              >
-            </div>
-          </ion-item>
+          <div class="ion-text-right ion-padding-end">
+            <ion-button fill="clear" size="default" slots="end"
+              >Poista haku</ion-button
+            >
+            <ion-button size="default" type="submit" slots="end"
+              >Tallenna</ion-button
+            >
+          </div>
         </form>
       </ion-list>
     </ion-accordion>

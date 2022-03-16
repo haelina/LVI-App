@@ -16,3 +16,51 @@
   border: 1px solid black;
   box-shadow: 3px 5px 10px 1px rgba(0, 0, 0, 0.5);
 }
+
+ion-content {
+  --ion-background-color: #f2f2f2;
+}
+
+ion-accordion {
+  --ion-background-color: #0041a1;
+}
+
+ion-accordion.accordion-expanding ion-item[slot="header"],
+ion-accordion.accordion-expanded ion-item[slot="header"] {
+  --ion-background-color: #0041a1;
+  --color: white;
+  ion-icon {
+    color: white;
+  }
+}
+
+ion-accordion.accordion-collapsing ion-item[slot="header"],
+ion-accordion.accordion-collapsed ion-item[slot="header"] {
+  --color: black;
+  --ion-background-color: #f2f2f2;
+  ion-icon {
+    color: black;
+  }
+}
+
+ion-list[slot="content"],
+ion-list[slot="content"] {
+  margin: 5px;
+  border-radius: 15px;
+  --ion-background-color: #f2f2f2;
+}
+
+ion-input,
+ion-textarea {
+  --background: white;
+  --padding-start: 5px;
+}
+
+.icon-bg {
+  --ion-item-background: #4fd5ff;
+  --padding-start: 10px;
+}
+
+.white-bg {
+  --background: white;
+}
