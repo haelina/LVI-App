@@ -9,12 +9,8 @@ import { ModifyJobPageRoutingModule } from './modify-job-routing.module';
 import { ModifyJobPage } from './modify-job.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ModifyJobPageRoutingModule
-  ],
-  declarations: [ModifyJobPage]
+  imports: [CommonModule, FormsModule, IonicModule, ModifyJobPageRoutingModule],
+  declarations: [ModifyJobPage],
+  exports: [ModifyJobPage],
 })
 export class ModifyJobPageModule {}
