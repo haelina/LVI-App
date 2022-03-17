@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IonRouterOutlet } from '@ionic/angular';
+import { IonRouterOutlet, ModalController } from '@ionic/angular';
 import JobEntry from 'src/app/interfaces/JobEntry';
+import { ModifyJobPage } from 'src/app/pages/modify-job/modify-job.page';
 
 @Component({
   selector: 'app-my-job-card',
@@ -9,9 +10,20 @@ import JobEntry from 'src/app/interfaces/JobEntry';
 })
 export class MyJobCardComponent implements OnInit {
   @Input() job: JobEntry;
-  modalOpen: false;
 
-  constructor(private routerOutlet: IonRouterOutlet) {}
+  constructor(
+    private modalController: ModalController,
+    private routerOutlet: IonRouterOutlet
+  ) {}
 
   ngOnInit() {}
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: ModifyJobPage,
+      swipeToClose: true,
+      cssClass: 'modify-job',
+    });
+    await modal.present();
+  }
 }
