@@ -10,6 +10,7 @@ import { MypagePage } from './mypage.page';
 import { RouterModule } from '@angular/router';
 import { MenuModule } from '../../components/menu/menu.module';
 import { CalendarModule } from 'ion2-calendar';
+import { MyJobCardModule } from '../../components/my-job-card/my-job-card.module';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { CalendarModule } from 'ion2-calendar';
     MenuModule,
     ReactiveFormsModule,
     CalendarModule,
+    MyJobCardModule,
     MypagePageRoutingModule,
   ],
   declarations: [MypagePage],
