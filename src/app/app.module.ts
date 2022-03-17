@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { ModifyJobPageModule } from './pages/modify-job/modify-job.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     IonicModule.forRoot(),
     AppRoutingModule,
     RouterModule,
+    ModifyJobPageModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),

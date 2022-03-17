@@ -5,7 +5,7 @@ import { ModifyJobPageModule } from 'src/app/pages/modify-job/modify-job.module'
 
 @NgModule({
   declarations: [MyJobCardComponent],
-  imports: [CommonModule, ModifyJobPageModule],
+  imports: [CommonModule],
   exports: [MyJobCardComponent],
 })
 export class MyJobCardModule {}
