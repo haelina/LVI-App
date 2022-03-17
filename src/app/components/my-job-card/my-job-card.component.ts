@@ -21,7 +21,8 @@ export class MyJobCardComponent implements OnInit {
   async openModal() {
     const modal = await this.modalController.create({
       component: ModifyJobPage,
-      swipeToClose: true,
+      showBackdrop: true,
+      backdropDismiss: true,
       cssClass: 'modify-job',
     });
     await modal.present();
