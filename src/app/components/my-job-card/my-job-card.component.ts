@@ -24,6 +24,9 @@ export class MyJobCardComponent implements OnInit {
       showBackdrop: true,
       backdropDismiss: true,
       cssClass: 'modify-job',
+      componentProps: {
+        job: this.job,
+      },
     });
     await modal.present();
   }
