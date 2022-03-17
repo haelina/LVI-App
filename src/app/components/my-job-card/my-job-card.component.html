@@ -1,4 +1,15 @@
+<ion-modal
+  [isOpen]="modalOpen"
+  [presentingElement]="routerOutlet.nativeEl"
+  [showBackdrop]="true"
+  [backdropDismiss]="true"
+>
+  <ng-template>
+    <ion-content>Modaalisisältö</ion-content>
+  </ng-template>
+</ion-modal>
 <ion-card>
+  <ion-button (click)="modalOpen = true">Avaa modaali</ion-button>
   <ion-card-header>
     <ion-card-title>Lyhyt kuvaus</ion-card-title>
   </ion-card-header>

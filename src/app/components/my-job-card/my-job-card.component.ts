@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IonRouterOutlet } from '@ionic/angular';
 import JobEntry from 'src/app/interfaces/JobEntry';
 
 @Component({
@@ -8,8 +9,9 @@ import JobEntry from 'src/app/interfaces/JobEntry';
 })
 export class MyJobCardComponent implements OnInit {
   @Input() job: JobEntry;
+  modalOpen: false;
 
-  constructor() {}
+  constructor(private routerOutlet: IonRouterOutlet) {}
 
   ngOnInit() {}
 }
