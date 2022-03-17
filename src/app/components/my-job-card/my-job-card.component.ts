@@ -11,10 +11,7 @@ import { ModifyJobPage } from 'src/app/pages/modify-job/modify-job.page';
 export class MyJobCardComponent implements OnInit {
   @Input() job: JobEntry;
 
-  constructor(
-    private modalController: ModalController,
-    private routerOutlet: IonRouterOutlet
-  ) {}
+  constructor(private modalController: ModalController) {}
 
   ngOnInit() {}
 
