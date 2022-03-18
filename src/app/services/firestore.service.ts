@@ -18,6 +18,7 @@ import JobEntry from '../interfaces/JobEntry';
 import { Observable } from 'rxjs';
 import Userdetails from '../interfaces/Userdetails';
 import TraineeEntry from '../interfaces/TraineeEntry';
+import { getDocs } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -81,6 +82,15 @@ export class FirestoreService {
       where('isTrainee', '==', isTrainee)
     );
     return collectionData(workerRef) as Observable<WorkerEntry[]>;
+  }
+
+  filterWorkersByLocation(locations: string[]): Observable<WorkerEntry[]> {
+    const workerRef = collection(this.firestore, 'workers');
+    const q = query(
+      workerRef,
+      where('locations', 'array-contains-any', locations)
+    );
+    return collectionData(q) as Observable<WorkerEntry[]>;
   }
 
   /**
