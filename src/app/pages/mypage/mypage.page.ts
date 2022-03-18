@@ -219,6 +219,16 @@ export class MypagePage implements OnInit {
     this.getUserDetails();
   }
 
+  deleteWorker() {
+    this.firestore.deleteWorkEntry();
+    this.getWorkerDetails();
+  }
+
+  deleteTrainee() {
+    this.firestore.deleteTraineeEntry();
+    this.getTraineeDetails();
+  }
+
   updateWorkSearch() {
     const formattedDates: string[] = [];
     this.myWorkSearch.value.dates.forEach((date) =>

@@ -108,6 +108,16 @@
               käyttäjille</ion-note
             >
           </ion-item>
+
+          <ion-button
+            class="ion-padding"
+            expand="block"
+            fill="solid"
+            color="danger"
+            (click)="deleteWorker()"
+            ><ion-icon slot="end" color="light" name="trash-outline"></ion-icon>
+            Poista</ion-button
+          >
           <div class="divider ion-margin"></div>
           <ion-list-header>
             <ion-label>Paikkakunnat: </ion-label>
@@ -182,9 +192,6 @@
             ></ion-textarea>
           </ion-item>
           <div class="ion-text-right ion-padding">
-            <ion-button fill="clear" size="default" slots="end"
-              >Poista kaikki</ion-button
-            >
             <ion-button size="default" type="submit" slots="end"
               >Tallenna</ion-button
             >
@@ -303,9 +310,6 @@
             ></ion-textarea>
           </ion-item>
           <div class="ion-text-right ion-padding">
-            <ion-button fill="clear" size="default" slots="end"
-              >Poista kaikki</ion-button
-            >
             <ion-button size="default" type="submit" slots="end"
               >Tallenna</ion-button
             >
@@ -353,6 +357,15 @@
               käyttäjille</ion-note
             >
           </ion-item>
+          <ion-button
+            class="ion-padding"
+            expand="block"
+            fill="solid"
+            color="danger"
+            (click)="deleteTrainee()"
+            ><ion-icon slot="end" color="light" name="trash-outline"></ion-icon>
+            Poista</ion-button
+          >
           <div class="divider ion-margin"></div>
           <ion-list-header>
             <ion-label>Paikkakunnat: </ion-label>
@@ -440,9 +453,6 @@
             ></ion-textarea>
           </ion-item>
           <div class="ion-text-right ion-padding-end">
-            <ion-button fill="clear" size="default" slots="end"
-              >Poista haku</ion-button
-            >
             <ion-button size="default" type="submit" slots="end"
               >Tallenna</ion-button
             >
