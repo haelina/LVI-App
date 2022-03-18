@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IonRouterOutlet, ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import JobEntry from 'src/app/interfaces/JobEntry';
 import { ModifyJobPage } from 'src/app/pages/modify-job/modify-job.page';
 import { FirestoreService } from 'src/app/services/firestore.service';
