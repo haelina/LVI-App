@@ -19,4 +19,14 @@ export class JobsPage implements OnInit {
   }
 
   ngOnInit() {}
+
+  getFiltered() {
+    console.log('Filtered by locations: ' + this.filterLocations);
+    this.firestore
+      .filterJobsByLocation(this.filterLocations)
+      .subscribe((res) => {
+        this.jobsData = res;
+        console.log(this.jobsData);
+      });
+  }
 }
