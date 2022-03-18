@@ -315,7 +315,7 @@
         <ion-list-header>
           <ion-label>Omat työilmoitukset: </ion-label>
         </ion-list-header>
-        <ion-item *ngFor="let job of jobsData" class="ion-no-padding">
+        <ion-item *ngFor="let job of jobsData">
           <app-my-job-card [job]="job"></app-my-job-card>
         </ion-item>
       </ion-list>

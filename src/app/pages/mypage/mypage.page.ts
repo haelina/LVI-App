@@ -276,8 +276,4 @@ export class MypagePage implements OnInit {
     });
     await toast.present();
   }
-
-  async deleteJob(id: string) {
-    this.firestore.deleteJobEnty(id);
-  }
 }
