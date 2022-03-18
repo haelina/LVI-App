@@ -1,5 +1,8 @@
 interface JobEntry {
-  uid?: string;
+  id?: string;
+  uid: string;
+  title?: string;
+  timestamp?: string;
   locations: string[];
   timing: string;
   address: string;
