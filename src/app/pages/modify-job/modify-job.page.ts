@@ -42,7 +42,7 @@ export class ModifyJobPage implements OnInit {
   }
 
   sendModifiedJob() {
-    console.log('sending data');
+    this.firestore.modifyJob(this.job.id, this.modifiedData.value);
     this.closeModal();
     this.presentToastWithMessage(
       'Onnea tekijän löytämiseen. Ilmoituksesi on päivitetty Työdiileriin.'
