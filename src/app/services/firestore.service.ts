@@ -93,6 +93,24 @@ export class FirestoreService {
     return collectionData(q) as Observable<WorkerEntry[]>;
   }
 
+  filterJobsByLocation(locations: string[]): Observable<JobEntry[]> {
+    const workerRef = collection(this.firestore, 'jobs');
+    const q = query(
+      workerRef,
+      where('locations', 'array-contains-any', locations)
+    );
+    return collectionData(q) as Observable<JobEntry[]>;
+  }
+
+  filterTraineesByLocation(locations: string[]): Observable<TraineeEntry[]> {
+    const workerRef = collection(this.firestore, 'trainees');
+    const q = query(
+      workerRef,
+      where('locations', 'array-contains-any', locations)
+    );
+    return collectionData(q) as Observable<TraineeEntry[]>;
+  }
+
   /**
    * Get all job entries from firestore.
    *
