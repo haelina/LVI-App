@@ -3,6 +3,7 @@ import { CalendarComponentOptions } from 'ion2-calendar';
 import * as moment from 'moment';
 import WorkerEntry from 'src/app/interfaces/Workerentry';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { format, startOfToday, subDays } from 'date-fns';
 
 @Component({
   selector: 'app-workforce',
@@ -41,6 +42,8 @@ export class WorkforcePage implements OnInit {
 
   getFiltered() {
     console.log('Filtered by locations: ' + this.filterLocations);
+    console.log(moment(this.dateRange.from).format());
+    console.log(moment(this.dateRange.to).format());
     //const start = '2022-03-25T00:00:00+02:00';
     //const end = '2022-03-31T00:00:00+02:00';
     this.firestore
@@ -49,13 +52,22 @@ export class WorkforcePage implements OnInit {
         const start = moment(this.dateRange.from).format();
         const end = moment(this.dateRange.to).format();
         const filteredWorkers = [];
-        res.forEach((w) => {
+        for (const w of res) {
+          for (const d of w.dates) {
+            if (start <= d && d <= end) {
+              filteredWorkers.push(w);
+              break;
+            }
+          }
+        }
+        /*res.forEach((w) => {
           w.dates.forEach((d) => {
             if (start.localeCompare(d) <= 0 && end.localeCompare(d) >= 0) {
               filteredWorkers.push(w);
             }
           });
         });
+        */
         this.workerData = filteredWorkers;
         console.log(this.workerData);
       });
@@ -63,6 +75,7 @@ export class WorkforcePage implements OnInit {
   }
 
   getOptions(dates): CalendarComponentOptions {
+    const today = format(new Date(), 'yyy-MM-dd');
     const calOptions: CalendarComponentOptions = {
       weekStart: 1,
       monthFormat: 'MMMM YYYY',
@@ -71,14 +84,16 @@ export class WorkforcePage implements OnInit {
       color: 'primary',
       daysConfig: [],
     };
+
     dates.forEach((d) => {
-      //console.log(d);
-      const obj = {
-        date: d,
-        marked: true,
-        cssClass: 'worker-calendar-marker',
-      };
-      calOptions.daysConfig.push(obj);
+      if (today <= d) {
+        const obj = {
+          date: d,
+          marked: true,
+          cssClass: 'worker-calendar-marker',
+        };
+        calOptions.daysConfig.push(obj);
+      }
     });
     return calOptions;
   }

@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 <ion-content>
   <h1 class="ion-padding-start">Tekijät</h1>
-  <ion-item>
+  <ion-item lines="none">
     <ion-select
       (ionChange)="filterLocations = $event.target.value"
       multiple="true"
@@ -37,7 +37,7 @@
       <ion-select-option value="Ylöjärvi">Ylöjärvi</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-item
+  <ion-item lines="none"
     ><ion-calendar
       [(ngModel)]="dateRange"
       [options]="optionsRange"
@@ -47,7 +47,11 @@
     ></ion-item
   >
   <ion-item
-    ><ion-button (click)="getFiltered()">Hae tekijät</ion-button></ion-item
+    ><ion-button
+      [disabled]="!filterLocations || filterLocations.length === 0 || !dateRange"
+      (click)="getFiltered()"
+      >Hae tekijät</ion-button
+    ></ion-item
   >
   <ion-card class="ion-no-padding" *ngFor="let worker of workerData"
     ><ion-card-header
