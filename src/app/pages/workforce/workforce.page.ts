@@ -10,11 +10,13 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class WorkforcePage implements OnInit {
   workerData: WorkerEntry[];
+  filterLocations: string[];
   options: CalendarComponentOptions = {
     pickMode: 'multi',
     color: 'danger',
     daysConfig: [{ date: new Date('2022-03-10'), marked: true }],
   };
+
   constructor(private firestore: FirestoreService) {
     this.firestore.getWorkers(false).subscribe((res) => {
       this.workerData = res;
@@ -23,6 +25,17 @@ export class WorkforcePage implements OnInit {
   }
 
   ngOnInit() {}
+
+  getFiltered() {
+    console.log('Filtered by locations: ' + this.filterLocations);
+    this.firestore
+      .filterWorkersByLocation(this.filterLocations)
+      .subscribe((res) => {
+        this.workerData = res;
+        console.log(this.workerData);
+      });
+  }
+
   getOptions(dates): CalendarComponentOptions {
     const calOptions: CalendarComponentOptions = {
       weekStart: 1,
