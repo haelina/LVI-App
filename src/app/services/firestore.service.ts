@@ -59,7 +59,13 @@ export class FirestoreService {
 
   async modifyJob(id: string, job: JobEntry) {
     const jobRef = doc(this.firestore, 'jobs', id);
-    await updateDoc(jobRef, { job });
+    await updateDoc(jobRef, {
+      address: job.address,
+      details: job.details,
+      duration: job.duration,
+      locations: job.locations,
+      timing: job.timing,
+    });
   }
 
   /**
