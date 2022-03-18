@@ -63,43 +63,7 @@ export class MypagePage implements OnInit {
         this.jobsData = res;
         console.log(this.jobsData);
       });
-    //console.log(auth.currentUser);
-    //console.log(this.router.url);
   }
-
-  /*
-  get company() {
-    return this.myData.get('company');
-  }
-
-  get firstName() {
-    return this.myData.get('firstName');
-  }
-
-  get lastName() {
-    return this.myData.get('lastName');
-  }
-
-  get address() {
-    return this.myData.get('address');
-  }
-
-  get zip() {
-    return this.myData.get('zip');
-  }
-
-  get city() {
-    return this.myData.get('city');
-  }
-
-  get phone() {
-    return this.myData.get('phone');
-  }
-
-  get email() {
-    return this.myData.get('email');
-  }
-  */
 
   initializeForm(userDetails: Userdetails | null) {
     this.myData = this.formbuilder.group({
