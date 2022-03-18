@@ -9,6 +9,8 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class JobsPage implements OnInit {
   jobsData: JobEntry[];
+  filterLocations: string[];
+
   constructor(private firestore: FirestoreService) {
     this.firestore.getJobs().subscribe((res) => {
       this.jobsData = res;

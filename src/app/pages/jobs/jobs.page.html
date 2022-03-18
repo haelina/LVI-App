@@ -1,6 +1,45 @@
 <app-menu></app-menu>>
 <ion-content>
   <h1 class="ion-padding-start">Työt</h1>
+  <ion-item>
+    <ion-select
+      (ionChange)="filterLocations = $event.target.value"
+      multiple="true"
+      class="ion-padding-horizontal"
+      placeholder="Valitse kunnat"
+      cancelText="Peruuta"
+      okText="OK"
+    >
+      <ion-select-option value="Akaa">Akaa</ion-select-option>
+      <ion-select-option value="Hämeenkyrö">Hämeenkyrö</ion-select-option>
+      <ion-select-option value="Ikaalinen">Ikaalinen</ion-select-option>
+      <ion-select-option value="Juupajoki">Juupajoki</ion-select-option>
+      <ion-select-option value="Kangasala">Kangasala</ion-select-option>
+      <ion-select-option value="Kihniö">Kihniö</ion-select-option>
+      <ion-select-option value="Kuhmoinen">Kuhmoinen</ion-select-option>
+      <ion-select-option value="Lempäälä">Lempäälä</ion-select-option>
+      <ion-select-option value="Mänttä-Vilppula"
+        >Mänttä-Vilppula</ion-select-option
+      >
+      <ion-select-option value="Nokia">Nokia</ion-select-option>
+      <ion-select-option value="Orivesi">Orivesi</ion-select-option>
+      <ion-select-option value="Parkano">Parkano</ion-select-option>
+      <ion-select-option value="Pirkkala">Pirkkala</ion-select-option>
+      <ion-select-option value="Punkalaidun">Punkalaidun</ion-select-option>
+      <ion-select-option value="Pälkäne">Pälkäne</ion-select-option>
+      <ion-select-option value="Ruovesi">Ruovesi</ion-select-option>
+      <ion-select-option value="Sastamala">Sastamala</ion-select-option>
+      <ion-select-option value="Tampere">Tampere</ion-select-option>
+      <ion-select-option value="Urjala">Urjala</ion-select-option>
+      <ion-select-option value="Valkeakoski">Valkeakoski</ion-select-option>
+      <ion-select-option value="Vesilahti">Vesilahti</ion-select-option>
+      <ion-select-option value="Virrat">Virrat</ion-select-option>
+      <ion-select-option value="Ylöjärvi">Ylöjärvi</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item
+    ><ion-button (click)="getFiltered()">Hae tekijät</ion-button></ion-item
+  >
   <ion-card class="ion-no-padding" *ngFor="let job of jobsData"
     ><ion-card-header
       ><ion-card-subtitle
