@@ -38,6 +38,15 @@
     </ion-select>
   </ion-item>
   <ion-item
+    ><ion-calendar
+      [(ngModel)]="dateRange"
+      [options]="optionsRange"
+      [type]="type"
+      [format]="'YYYY-MM-DD'"
+      >></ion-calendar
+    ></ion-item
+  >
+  <ion-item
     ><ion-button (click)="getFiltered()">Hae tekijät</ion-button></ion-item
   >
   <ion-card class="ion-no-padding" *ngFor="let worker of workerData"
