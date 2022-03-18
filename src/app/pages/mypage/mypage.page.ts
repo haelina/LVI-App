@@ -184,21 +184,7 @@ export class MypagePage implements OnInit {
     }
   }
 
-  async getJobDetails() {
-    const found = null;
-    //const found = await this.firestore.getJobs();
-    if (found) {
-      this.jobData = found;
-      this.noJobdetails = false;
-      this.initializeWorkSearchForm(this.workerData);
-    } else {
-      this.noJobdetails = true;
-      this.initializeJobForm(null);
-    }
-  }
-
   async getTraineeDetails() {
-    //const found = null;
     const found = await this.firestore.getTrainee();
     if (found) {
       this.traineeDetails = found;
@@ -213,9 +199,8 @@ export class MypagePage implements OnInit {
   ngOnInit() {
     this.getUserDetails();
     this.getWorkerDetails();
-    this.getJobDetails();
+    this.initializeJobForm(null);
     this.getTraineeDetails();
-    //console.log(this.firestore.getJobsFromUser(this.auth.currentUser.uid));
   }
 
   addJob() {
@@ -224,7 +209,6 @@ export class MypagePage implements OnInit {
       'Onnea tekijän löytämiseen. Ilmoituksesi on lisätty Työdiileriin.'
     );
     this.initializeJobForm(null);
-    //this.getJobDetails();
   }
 
   updateMyData() {
@@ -291,5 +275,9 @@ export class MypagePage implements OnInit {
       ],*/
     });
     await toast.present();
+  }
+
+  async deleteJob(id: string) {
+    this.firestore.deleteJobEnty(id);
   }
 }
