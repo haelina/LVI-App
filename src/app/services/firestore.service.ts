@@ -5,6 +5,7 @@ import {
   where,
   query,
   doc,
+  deleteDoc,
   setDoc,
   getDoc,
 } from '@firebase/firestore';
@@ -186,5 +187,27 @@ export class FirestoreService {
       console.log('No such document!');
       return null;
     }
+  }
+
+  async deleteWorkEntry() {
+    await deleteDoc(
+      doc(this.firestore, 'workers', this.authService.currentUserUid())
+    );
+  }
+
+  async deleteTraineeEntry() {
+    await deleteDoc(
+      doc(this.firestore, 'trainees', this.authService.currentUserUid())
+    );
+  }
+
+  async deleteJobEnty(id: string) {
+    await deleteDoc(doc(this.firestore, 'jobs', id));
+  }
+
+  async deleteUserDetails() {
+    await deleteDoc(
+      doc(this.firestore, 'userdetails', this.authService.currentUserUid())
+    );
   }
 }
