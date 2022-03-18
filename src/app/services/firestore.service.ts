@@ -121,6 +121,11 @@ export class FirestoreService {
     return collectionData(jobsRef) as Observable<JobEntry[]>;
   }
 
+  getTrainees(): Observable<TraineeEntry[]> {
+    const traineeRef = collection(this.firestore, 'trainees');
+    return collectionData(traineeRef) as Observable<TraineeEntry[]>;
+  }
+
   /**
    * Get all job entries from user with user uid.
    *
