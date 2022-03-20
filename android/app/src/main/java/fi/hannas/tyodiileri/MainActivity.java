@@ -1,4 +1,4 @@
-package fi.lvifirma.lviapp;
+package fi.hannas.tyodiileri;
 
 import com.getcapacitor.BridgeActivity;
 

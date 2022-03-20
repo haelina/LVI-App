@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">LVI-App</string>
-    <string name="title_activity_main">LVI-App</string>
-    <string name="package_name">fi.lvifirma.lviapp</string>
-    <string name="custom_url_scheme">fi.lvifirma.lviapp</string>
+    <string name="app_name">Työdiileri</string>
+    <string name="title_activity_main">Työdiileri</string>
+    <string name="package_name">fi.hannas.tyodiileri</string>
+    <string name="custom_url_scheme">fi.hannas.tyodiileri</string>
 </resources>
