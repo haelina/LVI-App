@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'fi.lvifirma.lviapp',
-  appName: 'LVI-App',
+  appId: 'fi.hannas.tyodiileri',
+  appName: 'Työdiileri',
   webDir: 'www',
   bundledWebRuntime: false,
 };
