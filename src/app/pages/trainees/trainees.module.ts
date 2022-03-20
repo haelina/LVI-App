@@ -9,6 +9,7 @@ import { TraineesPageRoutingModule } from './trainees-routing.module';
 import { TraineesPage } from './trainees.page';
 import { RouterModule } from '@angular/router';
 import { MenuModule } from '../../components/menu/menu.module';
+import { TraineeCardModule } from 'src/app/components/trainee-card/trainee-card.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { MenuModule } from '../../components/menu/menu.module';
     IonicModule,
     RouterModule,
     MenuModule,
+    TraineeCardModule,
     TraineesPageRoutingModule,
   ],
   declarations: [TraineesPage],
