@@ -8,6 +8,7 @@ import JobEntry from 'src/app/interfaces/JobEntry';
 })
 export class JobCardComponent implements OnInit {
   @Input() job: JobEntry;
+  showContact = false;
 
   constructor() {}
 
