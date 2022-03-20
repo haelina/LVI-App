@@ -40,7 +40,8 @@
   <ion-item
     ><ion-button (click)="getFiltered()">Hae tekijät</ion-button></ion-item
   >
-  <ion-card class="ion-no-padding" *ngFor="let job of jobsData"
+  <app-job-card *ngFor="let job of jobsData"></app-job-card>
+  <!-- <ion-card class="ion-no-padding" *ngFor="let job of jobsData"
     ><ion-card-header
       ><ion-card-subtitle
         >Klo {{job.startTime}} - {{job.endTime}}</ion-card-subtitle
@@ -59,5 +60,5 @@
       >Osoite/sijainti: {{job.address}}</ion-label
     >
     <ion-card-content>{{job.details}}</ion-card-content>
-  </ion-card>
+  </ion-card> -->
 </ion-content>
