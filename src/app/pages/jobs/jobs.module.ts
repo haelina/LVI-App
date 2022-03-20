@@ -9,6 +9,7 @@ import { JobsPageRoutingModule } from './jobs-routing.module';
 import { JobsPage } from './jobs.page';
 import { RouterModule } from '@angular/router';
 import { MenuModule } from '../../components/menu/menu.module';
+import { JobCardModule } from 'src/app/components/job-card/job-card.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { MenuModule } from '../../components/menu/menu.module';
     IonicModule,
     MenuModule,
     RouterModule,
+    JobCardModule,
     JobsPageRoutingModule,
   ],
   declarations: [JobsPage],
