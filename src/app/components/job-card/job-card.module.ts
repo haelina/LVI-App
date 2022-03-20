@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { JobCardComponent } from './job-card.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [JobCardComponent],
+  imports: [CommonModule],
+  exports: [JobCardComponent],
 })
-export class JobCardModule { }
+export class JobCardModule {}
