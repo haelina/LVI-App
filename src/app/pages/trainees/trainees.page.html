@@ -40,20 +40,8 @@
   <ion-item
     ><ion-button (click)="getFiltered()">Hae tekijät</ion-button></ion-item
   >
-  <ion-card class="ion-no-padding" *ngFor="let worker of traineeData"
-    ><ion-card-header
-      ><ion-card-subtitle
-        >{{worker.startTime}} - {{worker.endTime}}</ion-card-subtitle
-      ><ion-card-title>{{worker.date}} </ion-card-title>
-    </ion-card-header>
-    <ion-item lines="none">
-      <ion-icon name="information-circle" slot="end"></ion-icon>
-      <ion-label class="ion-text-wrap">
-        <ion-button *ngFor="let location of worker.locations"
-          >{{location}}</ion-button
-        ></ion-label
-      >
-    </ion-item>
-    <ion-card-content>{{worker.details}}</ion-card-content>
-  </ion-card>
+  <app-trainee-card
+    *ngFor="let trainee of traineeData"
+    [trainee]="trainee"
+  ></app-trainee-card>
 </ion-content>
