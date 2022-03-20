@@ -1,3 +1,44 @@
-<p>
-  trainee-card works!
-</p>
+<ion-card class="ion-no-padding">
+  <ion-item lines="none">
+    <h3>Lyhyt otsikko</h3>
+  </ion-item>
+  <ion-item lines="none" (click)="showContact = !showContact">
+    <ion-icon
+      size="large"
+      color="dark"
+      name="information-circle"
+      slot="start"
+    ></ion-icon>
+    <ion-label>Yhteystiedot:</ion-label>
+  </ion-item>
+  <ion-item lines="none" class="contactInfo ion-padding-horizontal">
+    <ion-label
+      >Nimi: Matti Meikäläinen<br />
+      Alue: 32100 Tampere<br />
+      Sähköposti: testi@testi.com<br />
+      Puhelin: +358451244251
+    </ion-label></ion-item
+  >
+  <ion-item lines="none">
+    <ion-label class="ion-text-wrap">
+      <ion-button *ngFor="let location of trainee.locations">{{
+        location
+      }}</ion-button></ion-label
+    >
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label class="ion-text-wrap">
+      Harjoittelun ajoitus: {{ trainee.timing }} <br /><br />
+      Ajokortti:
+      {{ trainee.hasLicense ? "On" : "Ei ole" }}
+      <br />
+      Oma auto käytössä:
+      {{ trainee.hasCar ? "On" : "Ei ole" }}
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none"
+    ><ion-label class="ion-text-wrap">{{
+      trainee.details
+    }}</ion-label></ion-item
+  >
+</ion-card>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import TraineeEntry from 'src/app/interfaces/TraineeEntry';
 
 @Component({
   selector: 'app-trainee-card',
@@ -6,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trainee-card.component.scss'],
 })
 export class TraineeCardComponent implements OnInit {
+  @Input() trainee: TraineeEntry;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }
