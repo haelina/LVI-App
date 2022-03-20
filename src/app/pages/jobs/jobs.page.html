@@ -1,7 +1,7 @@
 <app-menu></app-menu>>
 <ion-content>
   <h1 class="ion-padding-start">Työt</h1>
-  <ion-item>
+  <ion-item lines="none">
     <ion-select
       (ionChange)="filterLocations = $event.target.value"
       multiple="true"
@@ -40,25 +40,5 @@
   <ion-item
     ><ion-button (click)="getFiltered()">Hae tekijät</ion-button></ion-item
   >
-  <app-job-card *ngFor="let job of jobsData"></app-job-card>
-  <!-- <ion-card class="ion-no-padding" *ngFor="let job of jobsData"
-    ><ion-card-header
-      ><ion-card-subtitle
-        >Klo {{job.startTime}} - {{job.endTime}}</ion-card-subtitle
-      ><ion-card-title>{{job.date}} </ion-card-title>
-    </ion-card-header>
-
-    <ion-item lines="none">
-      <ion-icon name="information-circle" slot="end"></ion-icon>
-      <ion-label class="ion-text-wrap">
-        <ion-button *ngFor="let location of job.locations"
-          >{{location}}</ion-button
-        ></ion-label
-      >
-    </ion-item>
-    <ion-label class="ion-padding-start ion-text-wrap"
-      >Osoite/sijainti: {{job.address}}</ion-label
-    >
-    <ion-card-content>{{job.details}}</ion-card-content>
-  </ion-card> -->
+  <app-job-card *ngFor="let job of jobsData" [job]="job"></app-job-card>
 </ion-content>
