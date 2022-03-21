@@ -110,13 +110,14 @@
           </ion-item>
 
           <ion-button
+            *ngIf="!noWorkdetails"
             class="ion-padding"
             expand="block"
             fill="solid"
             color="danger"
             (click)="deleteWorker()"
             ><ion-icon slot="end" color="light" name="trash-outline"></ion-icon>
-            Poista</ion-button
+            Poista työnhaku</ion-button
           >
           <div class="divider ion-margin"></div>
           <ion-list-header>
@@ -358,13 +359,14 @@
             >
           </ion-item>
           <ion-button
+            *ngIf="!noTraineedetails"
             class="ion-padding"
             expand="block"
             fill="solid"
             color="danger"
             (click)="deleteTrainee()"
             ><ion-icon slot="end" color="light" name="trash-outline"></ion-icon>
-            Poista</ion-button
+            Poista harjoitteluhaku</ion-button
           >
           <div class="divider ion-margin"></div>
           <ion-list-header>
