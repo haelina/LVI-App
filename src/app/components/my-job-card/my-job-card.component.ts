@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import JobEntry from 'src/app/interfaces/JobEntry';
 import { ModifyJobPage } from 'src/app/pages/modify-job/modify-job.page';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -14,13 +14,14 @@ export class MyJobCardComponent implements OnInit {
 
   constructor(
     private modalController: ModalController,
-    private firestore: FirestoreService
+    private firestore: FirestoreService,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {}
 
   async deleteJob() {
-    this.firestore.deleteJobEnty(this.job.id);
+    this.presentAlertConfirm();
   }
 
   async openModal() {
@@ -34,5 +35,31 @@ export class MyJobCardComponent implements OnInit {
       },
     });
     await modal.present();
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Vahvista poisto',
+      message: 'Haluatko varmasti poistaa kyseisen työilmoituksen?',
+      buttons: [
+        {
+          text: 'Peruuta',
+          role: 'cancel',
+          cssClass: 'secondary',
+          id: 'cancel-button',
+          handler: () => {},
+        },
+        {
+          text: 'Poista',
+          id: 'confirm-button',
+          handler: () => {
+            this.firestore.deleteJobEnty(this.job.id);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 }
