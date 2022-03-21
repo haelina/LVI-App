@@ -220,13 +220,11 @@ export class MypagePage implements OnInit {
   }
 
   deleteWorker() {
-    this.firestore.deleteWorkEntry();
-    this.getWorkerDetails();
+    this.presentAlertConfirm('worker');
   }
 
   deleteTrainee() {
-    this.firestore.deleteTraineeEntry();
-    this.getTraineeDetails();
+    this.presentAlertConfirm('trainee');
   }
 
   updateWorkSearch() {
@@ -285,5 +283,40 @@ export class MypagePage implements OnInit {
       ],*/
     });
     await toast.present();
+  }
+
+  async presentAlertConfirm(entryType: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Vahvista poisto',
+      message: 'Haluatko varmasti poistaa kyseisen haun?',
+      buttons: [
+        {
+          text: 'Peruuta',
+          role: 'cancel',
+          cssClass: 'secondary',
+          id: 'cancel-button',
+          handler: () => {
+            //console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'Poista',
+          id: 'confirm-button',
+          handler: () => {
+            if (entryType === 'trainee') {
+              this.firestore.deleteTraineeEntry();
+              this.getTraineeDetails();
+            } else if (entryType === 'worker') {
+              this.firestore.deleteWorkEntry();
+              this.getWorkerDetails();
+            }
+            console.log('Confirm Okay');
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 }
