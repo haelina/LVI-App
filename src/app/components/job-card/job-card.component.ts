@@ -31,7 +31,6 @@ export class JobCardComponent implements OnInit {
   }
 
   makeCall() {
-    console.log('Calling now');
     this.callNumber
       .callNumber('+358456675496', true)
       .then((res) => console.log('Launched dialer!', res))
