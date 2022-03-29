@@ -41,19 +41,14 @@ ion-list[slot="content"] {
   --ion-background-color: #f2f2f2;
 }
 
-ion-input,
 ion-textarea {
   --background: white;
-  --padding-start: 10px;
-}
-
-ion-textarea {
   padding-left: 10px;
 }
 
 .icon-bg {
   background-color: #4fd5ff;
-  padding: 3px;
+  padding: 5px;
 }
 
 .white-bg {
@@ -63,4 +58,16 @@ ion-textarea {
 ion-note {
   font-size: 14px;
   text-align: justify;
+}
+
+form {
+  ion-item {
+    ion-label {
+      padding-bottom: 15px;
+    }
+    ion-input {
+      --background: white;
+      --padding-start: 5px;
+    }
+  }
 }
