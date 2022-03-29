@@ -106,10 +106,10 @@ export class MypagePage implements OnInit {
 
   initializeWorkSearchForm(values: WorkerEntry | null) {
     this.myWorkSearch = this.formbuilder.group({
+      uid: [this.auth.currentUser.uid],
       locations: [values ? values.locations : []],
       dates: [values ? values.dates : []],
       details: [values ? values.details : ''],
-      isTrainee: [false],
     });
     if (values) {
       this.optionsMulti.daysConfig = [];
@@ -145,6 +145,7 @@ export class MypagePage implements OnInit {
 
   initializeTraineeForm(values: TraineeEntry | null) {
     this.traineeData = this.formbuilder.group({
+      uid: [this.auth.currentUser.uid],
       locations: [values ? values.locations : [], [Validators.required]],
       timing: [
         values ? values.timing : '',
@@ -161,7 +162,7 @@ export class MypagePage implements OnInit {
   }
 
   async getUserDetails() {
-    const found = await this.firestore.getUser();
+    const found = await this.firestore.getUser(this.auth.currentUser.uid);
     if (found) {
       this.userdetails = found;
       this.initializeForm(this.userdetails);
@@ -185,7 +186,7 @@ export class MypagePage implements OnInit {
   }
 
   async getTraineeDetails() {
-    const found = await this.firestore.getTrainee();
+    const found = await this.firestore.getTrainee(this.auth.currentUser.uid);
     if (found) {
       this.traineeDetails = found;
       this.noTraineedetails = false;
