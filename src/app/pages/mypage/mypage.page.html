@@ -28,9 +28,7 @@
           (ngSubmit)="updateMyData()"
         >
           <ion-item>
-            <ion-label position="stacked" class="ion-padding-bottom"
-              >Yritys:</ion-label
-            >
+            <ion-label position="stacked">Yritys:</ion-label>
             <ion-input type="text" formControlName="company"></ion-input>
           </ion-item>
           <ion-item>
@@ -113,10 +111,12 @@
             Poista työnhaku</ion-button
           >
           <div class="divider ion-margin"></div>
-          <ion-list-header>
-            <ion-label>Paikkakunnat: </ion-label>
-          </ion-list-header>
-          <ion-item class="white-bg ion-no-padding ion-margin-horizontal">
+          <ion-label class="ion-padding-horizontal my-label"
+            >Paikkakunnat:
+          </ion-label>
+          <ion-item
+            class="white-bg ion-no-padding ion-margin-horizontal ion-margin-bottom"
+          >
             <span class="icon-bg"
               ><ion-icon size="large" name="location-outline"></ion-icon
             ></span>
@@ -161,9 +161,9 @@
               <ion-select-option value="Ylöjärvi">Ylöjärvi</ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-list-header>
-            <ion-label> Valitse päivämäärät:</ion-label>
-          </ion-list-header>
+          <ion-label class="ion-padding-horizontal">
+            Valitse päivämäärät:</ion-label
+          >
           <ion-item class="white-bg ion-no-padding ion-margin-horizontal">
             <ion-calendar
               class="ion-no-padding"
@@ -174,10 +174,10 @@
             >
             </ion-calendar>
           </ion-item>
-          <ion-list-header
-            ><ion-label>Lisätietoja:</ion-label>
-          </ion-list-header>
           <ion-item>
+            <ion-label class="arealabel" position="stacked"
+              >Lisätietoja:</ion-label
+            >
             <ion-textarea
               formControlName="details"
               autoGrow="false"
@@ -222,9 +222,7 @@
             >
           </ion-item>
           <div class="divider ion-margin"></div>
-          <ion-list-header>
-            <ion-label>Paikkakunnat: </ion-label>
-          </ion-list-header>
+          <ion-label class="ion-padding-horizontal">Paikkakunnat: </ion-label>
           <ion-item class="white-bg ion-no-padding ion-margin-horizontal">
             <span class="icon-bg"
               ><ion-icon size="large" name="location-outline"></ion-icon
@@ -291,11 +289,10 @@
               formControlName="duration"
             ></ion-input
           ></ion-item>
-
-          <ion-list-header
-            ><ion-label>Lisätietoja:</ion-label>
-          </ion-list-header>
           <ion-item>
+            <ion-label class="arealabel" position="stacked"
+              >Lisätietoja:</ion-label
+            >
             <ion-textarea
               formControlName="details"
               autoGrow="false"
@@ -362,9 +359,7 @@
             Poista harjoitteluhaku</ion-button
           >
           <div class="divider ion-margin"></div>
-          <ion-list-header>
-            <ion-label>Paikkakunnat: </ion-label>
-          </ion-list-header>
+          <ion-label class="ion-padding-horizontal">Paikkakunnat: </ion-label>
           <ion-item class="white-bg ion-no-padding ion-margin-horizontal">
             <span class="icon-bg"
               ><ion-icon size="large" name="location-outline"></ion-icon
@@ -411,17 +406,15 @@
               <ion-select-option value="Ylöjärvi">Ylöjärvi</ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-list-header>
-            <ion-label>Harjoittelun ajankohta: </ion-label>
-          </ion-list-header>
           <ion-item>
+            <ion-label position="stacked">Harjoittelun ajankohta:</ion-label>
             <ion-input
               formControlName="timing"
               placeholder="Milloin harjoittelu on"
             ></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label>Ajokortti löytyy:</ion-label>
+            <ion-text>Ajokortti löytyy</ion-text>
             <ion-checkbox
               slot="start"
               mode="md"
@@ -429,17 +422,17 @@
             ></ion-checkbox>
           </ion-item>
           <ion-item>
-            <ion-label>Auto käytössä:</ion-label>
+            <ion-text>Auto käytössä</ion-text>
             <ion-checkbox
               slot="start"
               mode="md"
               formControlName="hasCar"
             ></ion-checkbox
           ></ion-item>
-          <ion-list-header>
-            <ion-label>Lisätietoja: </ion-label>
-          </ion-list-header>
           <ion-item>
+            <ion-label class="arealabel" position="stacked"
+              >Lisätiedot:</ion-label
+            >
             <ion-textarea
               formControlName="details"
               autoGrow="false"
