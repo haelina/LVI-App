@@ -63,3 +63,12 @@
     padding-left: 5px;
   }
 }
+
+ion-accordion-group {
+  ion-accordion.accordion-expanding,
+  ion-accordion.accordion-expanded {
+    .ion-accordion-toggle-icon {
+      color: white;
+    }
+  }
+}
