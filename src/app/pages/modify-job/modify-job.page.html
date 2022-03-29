@@ -1,7 +1,9 @@
 <ion-content
   ><ion-list lines="none">
-    <ion-list-header>Muokkaa työilmoitusta:</ion-list-header>
-    <ion-item class="ion-padding-top">
+    <ion-list-header
+      ><ion-label><h1>Muokkaa työilmoitusta:</h1></ion-label></ion-list-header
+    >
+    <ion-item>
       <ion-note color="tertiary">
         <b>Tärkeää!</b> Tarkista myös, että yhteystietosi ovat oikein Omat
         tiedot-välilehdellä. Siellä olevat yhteystiedot tulevat hakemukseesi
@@ -16,7 +18,7 @@
       <div class="divider ion-margin"></div>
       <ion-label class="ion-padding-horizontal">Paikkakunnat: </ion-label>
 
-      <ion-item class="white-bg">
+      <ion-item class="white-bg custom-p">
         <span class="loc-bg"
           ><ion-icon size="large" name="location-outline"></ion-icon
         ></span>
@@ -55,29 +57,29 @@
           <ion-select-option value="Ylöjärvi">Ylöjärvi</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-item
-        ><ion-label position="stacked">Ajankohta</ion-label
+      <ion-label class="ion-padding-horizontal">Ajankohta: </ion-label>
+      <ion-item class="custom-p"
         ><ion-input
           placeholder="Päivämäärät, viikko, kuukausi tms"
           formControlName="timing"
         ></ion-input
       ></ion-item>
-      <ion-item
-        ><ion-label position="stacked">Tarkempi sijainti</ion-label
+      <ion-label class="ion-padding-horizontal">Tarkempi sijainti: </ion-label>
+      <ion-item class="custom-p"
         ><ion-input
           placeholder="Osoite, kaupunginosa tms"
           formControlName="address"
         ></ion-input
       ></ion-item>
-      <ion-item
-        ><ion-label position="stacked">Työn kesto</ion-label
+      <ion-label class="ion-padding-horizontal">Työn kesto: </ion-label>
+      <ion-item class="custom-p"
         ><ion-input
           placeholder="Tunteja, päiviä, viikkoja?"
           formControlName="duration"
         ></ion-input
       ></ion-item>
-      <ion-item>
-        <ion-label position="stacked">Lisätietoja:</ion-label>
+      <ion-label class="ion-padding-horizontal">Lisätietoja: </ion-label>
+      <ion-item class="custom-p">
         <ion-textarea
           formControlName="details"
           autoGrow="false"
