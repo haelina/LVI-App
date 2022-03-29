@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import JobEntry from 'src/app/interfaces/JobEntry';
 import Userdetails from 'src/app/interfaces/Userdetails';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 
 @Component({
   selector: 'app-job-card',
@@ -13,7 +14,10 @@ export class JobCardComponent implements OnInit {
   showContact = false;
   userdata: Userdetails;
 
-  constructor(private firestore: FirestoreService) {}
+  constructor(
+    private firestore: FirestoreService,
+    private callNumber: CallNumber
+  ) {}
 
   async getUserDetails() {
     const found = await this.firestore.getUser(this.job.uid);
@@ -24,5 +28,13 @@ export class JobCardComponent implements OnInit {
 
   ngOnInit() {
     this.getUserDetails();
+  }
+
+  makeCall() {
+    console.log('Calling now');
+    this.callNumber
+      .callNumber('+358456675496', true)
+      .then((res) => console.log('Launched dialer!', res))
+      .catch((err) => console.log('Error launching dialer', err));
   }
 }
