@@ -11,12 +11,16 @@
     ></ion-icon>
     <ion-label>Yhteystiedot:</ion-label>
   </ion-item>
-  <ion-item lines="none" class="contactInfo ion-padding-horizontal">
+  <ion-item
+    lines="none"
+    class="contactInfo ion-padding-horizontal"
+    *ngIf="userdata"
+  >
     <ion-label
-      >Nimi: Matti Meikäläinen<br />
-      Alue: 32100 Tampere<br />
-      Sähköposti: testi@testi.com<br />
-      Puhelin: +358451244251
+      >Nimi: {{ userdata.firstName }} {{ userdata.lastName }}<br />
+      Alue: {{ userdata.zip }} {{ userdata.city }}<br />
+      Sähköposti: {{ userdata.email }}<br />
+      Puhelin: {{ userdata.phone }}
     </ion-label></ion-item
   >
   <ion-item lines="none">
