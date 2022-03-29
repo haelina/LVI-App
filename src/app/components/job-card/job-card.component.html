@@ -2,22 +2,42 @@
   <ion-item lines="none">
     <h3>Lyhyt otsikko</h3>
   </ion-item>
-  <ion-item lines="none" (click)="showContact = !showContact">
+  <ion-item lines="none" (click)="showContact = !showContact" *ngIf="userdata">
     <ion-icon
       size="large"
       color="dark"
-      name="information-circle"
+      name="hammer-outline"
       slot="start"
     ></ion-icon>
-    <ion-label>Tekijän nimi / Yritys</ion-label>
+    <ion-label class="ion-text-wrap"
+      >{{ userdata.firstName }} {{ userdata.lastName }} / {{ userdata.company }}
+    </ion-label>
   </ion-item>
-  <ion-item lines="none" class="contactInfo ion-padding" *ngIf="showContact">
-    <ion-label
-      >Alue: 32100 Tampere<br />
-      Sähköposti: testi@testi.com<br />
-      Puhelin: +358451244251
-    </ion-label></ion-item
+  <ion-list
+    class="contactInfo"
+    lines="none"
+    class="contactInfo ion-padding"
+    *ngIf="showContact && userdata"
   >
+    <ion-item lines="none">
+      <ion-icon slot="start" name="location-outline"></ion-icon>
+      <ion-label class="ion-text-wrap"
+        >{{ userdata.zip }} {{ userdata.city }}</ion-label
+      >
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="at-outline"></ion-icon>
+      <ion-label class="ion-text-wrap">
+        {{ userdata.email }}</ion-label
+      ></ion-item
+    >
+    <ion-item lines="none">
+      <ion-icon slot="start" name="call-outline"></ion-icon>
+      <ion-label class="ion-text-wrap">{{
+        userdata.phone
+      }}</ion-label></ion-item
+    >
+  </ion-list>
   <ion-item lines="none">
     <ion-label class="ion-text-wrap">
       <ion-button *ngFor="let location of job.locations">{{
