@@ -171,12 +171,8 @@ export class FirestoreService {
   }
   */
 
-  async getUser(): Promise<Userdetails | null> {
-    const docRef = doc(
-      this.firestore,
-      'userdetails',
-      this.authService.currentUserUid()
-    );
+  async getUser(uid: string): Promise<Userdetails | null> {
+    const docRef = doc(this.firestore, 'userdetails', uid);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -221,12 +217,8 @@ export class FirestoreService {
     );
   }
 
-  async getTrainee(): Promise<TraineeEntry | null> {
-    const docRef = doc(
-      this.firestore,
-      'trainees',
-      this.authService.currentUserUid()
-    );
+  async getTrainee(uid: string): Promise<TraineeEntry | null> {
+    const docRef = doc(this.firestore, 'trainees', uid);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
