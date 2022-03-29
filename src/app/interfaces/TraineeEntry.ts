@@ -1,4 +1,5 @@
 interface TraineeEntry {
+  uid?: string;
   locations: string[];
   timing: string;
   hasLicense: boolean;
