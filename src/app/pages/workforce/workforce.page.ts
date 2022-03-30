@@ -25,7 +25,7 @@ export class WorkforcePage implements OnInit {
   };
 
   constructor(private firestore: FirestoreService) {
-    this.firestore.getWorkers(false).subscribe((res) => {
+    this.firestore.getWorkers().subscribe((res) => {
       this.workerData = res;
       console.log(this.workerData);
     });
