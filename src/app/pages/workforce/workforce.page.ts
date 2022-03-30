@@ -3,6 +3,7 @@ import { CalendarComponentOptions } from 'ion2-calendar';
 import * as moment from 'moment';
 import WorkerEntry from 'src/app/interfaces/Workerentry';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { getLocationList } from 'src/app/utilities/locations';
 
 @Component({
   selector: 'app-workforce',
@@ -12,6 +13,8 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class WorkforcePage implements OnInit {
   workerData: WorkerEntry[];
   filterLocations: string[];
+  showFilters: false;
+  locationList = getLocationList();
 
   dateRange: { from: string; to: string };
   type: 'string'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
