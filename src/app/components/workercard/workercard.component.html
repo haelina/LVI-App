@@ -1,0 +1,34 @@
+<ion-item lines="none" (click)="showContact = !showContact" *ngIf="userdata">
+  <ion-icon
+    size="large"
+    color="dark"
+    name="construct-outline"
+    slot="start"
+  ></ion-icon>
+  <ion-label class="ion-text-wrap"
+    >{{ userdata.firstName }} {{ userdata.lastName }} / {{ userdata.company }}
+  </ion-label>
+</ion-item>
+<ion-list
+  class="contactInfo"
+  lines="none"
+  class="contactInfo ion-padding"
+  *ngIf="showContact && userdata"
+>
+  <ion-item lines="none">
+    <ion-icon slot="start" name="location-outline"></ion-icon>
+    <ion-label class="ion-text-wrap"
+      >{{ userdata.zip }} {{ userdata.city }}</ion-label
+    >
+  </ion-item>
+  <ion-item lines="none">
+    <ion-icon slot="start" name="at-outline"></ion-icon>
+    <ion-label class="ion-text-wrap"> {{ userdata.email }}</ion-label></ion-item
+  >
+  <ion-item button fill="outline" class="callButton" (click)="makeCall()">
+    <ion-icon color="white" slot="start" name="call-outline"></ion-icon>
+    <ion-label class="ion-text-wrap ion-padding-start"
+      >Soita {{ userdata.phone }}</ion-label
+    ></ion-item
+  >
+</ion-list>
