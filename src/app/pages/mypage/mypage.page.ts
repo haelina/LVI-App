@@ -11,6 +11,7 @@ import * as moment from 'moment';
 import TraineeEntry from 'src/app/interfaces/TraineeEntry';
 import { ToastController } from '@ionic/angular';
 import JobEntry from 'src/app/interfaces/JobEntry';
+import { getLocationList } from 'src/app/utilities/locations';
 
 @Component({
   selector: 'app-mypage',
@@ -18,6 +19,8 @@ import JobEntry from 'src/app/interfaces/JobEntry';
   styleUrls: ['./mypage.page.scss'],
 })
 export class MypagePage implements OnInit {
+  locationList = getLocationList();
+
   myData: FormGroup;
   userdetails: Userdetails;
   isLoading = true;
