@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import JobEntry from 'src/app/interfaces/JobEntry';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { getLocationList } from 'src/app/utilities/locations';
 
 @Component({
   selector: 'app-jobs',
@@ -8,6 +9,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./jobs.page.scss'],
 })
 export class JobsPage implements OnInit {
+  locationList = getLocationList();
   jobsData: JobEntry[];
   filterLocations: string[];
 
