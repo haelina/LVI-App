@@ -12,6 +12,10 @@
     <ion-label class="ion-text-wrap"
       >{{ userdata.firstName }} {{ userdata.lastName }} / {{ userdata.company }}
     </ion-label>
+    <ion-icon
+      slot="end"
+      name="{{ showContact ? 'eye-outline' : 'eye-off-outline' }}"
+    ></ion-icon>
   </ion-item>
   <ion-list
     class="contactInfo"
