@@ -1,5 +1,10 @@
 <ion-card class="ion-no-padding"
-  ><ion-item lines="none" (click)="showContact = !showContact" *ngIf="userdata">
+  ><ion-item
+    lines="none"
+    (click)="showContact = !showContact"
+    *ngIf="userdata"
+    class="shortdata"
+  >
     <ion-icon
       size="large"
       color="dark"
@@ -9,6 +14,10 @@
     <ion-label class="ion-text-wrap"
       >{{ userdata.firstName }} {{ userdata.lastName }} / {{ userdata.company }}
     </ion-label>
+    <ion-icon
+      slot="end"
+      name="{{ !showContact ? 'eye-outline' : 'eye-off-outline' }}"
+    ></ion-icon>
   </ion-item>
   <ion-list
     class="contactInfo"
@@ -36,7 +45,7 @@
     >
   </ion-list>
 
-  <ion-item line="none">
+  <ion-item lines="none" class="cal">
     <ion-calendar [options]="getOptions(worker.dates)" readonly="true">
     </ion-calendar>
   </ion-item>
@@ -48,5 +57,7 @@
       }}</ion-button></ion-label
     >
   </ion-item>
-  <ion-card-content>{{ worker.details }}</ion-card-content>
+  <ion-item lines="none" class="descript"
+    ><ion-label class="ion-text-wrap">{{ worker.details }}</ion-label></ion-item
+  >
 </ion-card>
