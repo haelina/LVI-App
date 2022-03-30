@@ -1,8 +1,26 @@
+<ion-card class="ion-no-padding"
+  ><ion-card-header
+    ><ion-card-subtitle>Tekijän nimi / Esimerkki Oy</ion-card-subtitle>
+  </ion-card-header>
+  <ion-item line="none">
+    <ion-calendar [options]="getOptions(worker.dates)" readonly="true">
+    </ion-calendar>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-icon name="information-circle" slot="end"></ion-icon>
+    <ion-label class="ion-text-wrap">
+      <ion-button *ngFor="let location of worker.locations">{{
+        location
+      }}</ion-button></ion-label
+    >
+  </ion-item>
+  <ion-card-content>{{ worker.details }}</ion-card-content>
+</ion-card>
 <ion-item lines="none" (click)="showContact = !showContact" *ngIf="userdata">
   <ion-icon
     size="large"
     color="dark"
-    name="construct-outline"
+    name="hammer-outline"
     slot="start"
   ></ion-icon>
   <ion-label class="ion-text-wrap"
