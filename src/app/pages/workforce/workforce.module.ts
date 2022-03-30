@@ -11,6 +11,7 @@ import { MenuModule } from '../../components/menu/menu.module';
 import { RouterModule } from '@angular/router';
 
 import { CalendarModule } from 'ion2-calendar';
+import { WorkercardModule } from 'src/app/components/workercard/workercard.module';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { CalendarModule } from 'ion2-calendar';
     MenuModule,
     RouterModule,
     CalendarModule,
+    WorkercardModule,
     WorkforcePageRoutingModule,
   ],
   declarations: [WorkforcePage],
