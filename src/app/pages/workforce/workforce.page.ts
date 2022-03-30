@@ -67,6 +67,7 @@ export class WorkforcePage implements OnInit {
         this.workerData = filteredWorkers;
         console.log(this.workerData);
       });
+    this.showFilters = false;
     //console.log(moment(this.dateRange.from).format());
   }
 }
