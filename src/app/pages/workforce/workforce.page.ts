@@ -3,7 +3,6 @@ import { CalendarComponentOptions } from 'ion2-calendar';
 import * as moment from 'moment';
 import WorkerEntry from 'src/app/interfaces/Workerentry';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { format, startOfToday, subDays } from 'date-fns';
 
 @Component({
   selector: 'app-workforce',
