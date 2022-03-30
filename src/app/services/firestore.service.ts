@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵɵelementContainerStart } from '@angular/core';
 import {
   collection,
   addDoc,
@@ -72,15 +72,11 @@ export class FirestoreService {
   /**
    * Get all worker or trainee documents from firestore.
    *
-   * @param isTrainee - boolean value
    * @returns array of worker data or trainee data depending on given
    * param value
    */
-  getWorkers(isTrainee: boolean): Observable<WorkerEntry[]> {
-    const workerRef = query(
-      collection(this.firestore, 'workers'),
-      where('isTrainee', '==', isTrainee)
-    );
+  getWorkers(): Observable<WorkerEntry[]> {
+    const workerRef = query(collection(this.firestore, 'workers'));
     return collectionData(workerRef) as Observable<WorkerEntry[]>;
   }
 
