@@ -53,22 +53,8 @@
       >Hae tekijät</ion-button
     ></ion-item
   >
-  <ion-card class="ion-no-padding" *ngFor="let worker of workerData"
-    ><ion-card-header
-      ><ion-card-subtitle>Tekijän nimi / Esimerkki Oy</ion-card-subtitle>
-    </ion-card-header>
-    <ion-item line="none">
-      <ion-calendar [options]="getOptions(worker.dates)" readonly="true">
-      </ion-calendar>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-icon name="information-circle" slot="end"></ion-icon>
-      <ion-label class="ion-text-wrap">
-        <ion-button *ngFor="let location of worker.locations"
-          >{{location}}</ion-button
-        ></ion-label
-      >
-    </ion-item>
-    <ion-card-content>{{worker.details}}</ion-card-content>
-  </ion-card>
+  <app-workercard
+    *ngFor="let worker of workerData"
+    [worker]="worker"
+  ></app-workercard>
 </ion-content>
