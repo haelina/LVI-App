@@ -83,3 +83,8 @@ ion-select {
   width: 100%;
   justify-content: center;
 }
+
+.custom-padding {
+  --padding-bottom: 5px;
+  --padding-top: 5px;
+}
