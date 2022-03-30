@@ -25,12 +25,6 @@ export class WorkforcePage implements OnInit {
     color: 'primary',
   };
 
-  options: CalendarComponentOptions = {
-    pickMode: 'multi',
-    color: 'danger',
-    daysConfig: [{ date: new Date('2022-03-10'), marked: true }],
-  };
-
   constructor(private firestore: FirestoreService) {
     this.firestore.getWorkers(false).subscribe((res) => {
       this.workerData = res;
@@ -72,29 +66,5 @@ export class WorkforcePage implements OnInit {
         console.log(this.workerData);
       });
     //console.log(moment(this.dateRange.from).format());
-  }
-
-  getOptions(dates): CalendarComponentOptions {
-    const today = format(new Date(), 'yyy-MM-dd');
-    const calOptions: CalendarComponentOptions = {
-      weekStart: 1,
-      monthFormat: 'MMMM YYYY',
-      showMonthPicker: false,
-      weekdays: ['SU', 'MA', 'TI', 'KE', 'TO', 'PE', 'LA'],
-      color: 'primary',
-      daysConfig: [],
-    };
-
-    dates.forEach((d) => {
-      if (today <= d) {
-        const obj = {
-          date: d,
-          marked: true,
-          cssClass: 'worker-calendar-marker',
-        };
-        calOptions.daysConfig.push(obj);
-      }
-    });
-    return calOptions;
   }
 }
