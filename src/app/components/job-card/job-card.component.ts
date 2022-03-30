@@ -32,7 +32,7 @@ export class JobCardComponent implements OnInit {
 
   makeCall() {
     this.callNumber
-      .callNumber('+358456675496', true)
+      .callNumber(this.userdata.phone, true)
       .then((res) => console.log('Launched dialer!', res))
       .catch((err) => console.log('Error launching dialer', err));
   }
