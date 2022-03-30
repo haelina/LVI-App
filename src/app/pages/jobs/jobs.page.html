@@ -1,23 +1,45 @@
 <app-menu></app-menu>>
 <ion-content fullscreen="true">
-  <h1 class="ion-padding-start">Työt</h1>
-  <ion-item lines="none">
-    <ion-select
-      (ionChange)="filterLocations = $event.target.value"
-      multiple="true"
-      class="ion-padding-horizontal"
-      placeholder="Valitse kunnat"
-      cancelText="Peruuta"
-      okText="OK"
-      ><ion-select-option
-        *ngFor="let location of locationList"
-        value="{{location}}"
-        >{{location}}</ion-select-option
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row>
+      <ion-col class="ion-align-self-center"
+        ><ion-text color="primary">
+          <h1>TYÖT</h1>
+        </ion-text></ion-col
       >
-    </ion-select>
-  </ion-item>
-  <ion-item
-    ><ion-button (click)="getFiltered()">Hae tekijät</ion-button></ion-item
+      <ion-col class="ion-text-end"
+        ><ion-button class="filterbutton" (click)="showFilters=!showFilters"
+          ><ion-icon size="large" slot="end" name="filter-outline"></ion-icon
+          ><ion-label *ngIf="showFilters"
+            >Piilota <br />
+            rajausvalikko</ion-label
+          >
+          <ion-label *ngIf="!showFilters"
+            >Rajaa<br />tuloksia</ion-label
+          ></ion-button
+        ></ion-col
+      >
+    </ion-row>
+  </ion-grid>
+  <ion-list lines="none" *ngIf="showFilters">
+    <ion-item lines="none" class="filterbg">
+      <ion-select
+        (ionChange)="filterLocations = $event.target.value"
+        multiple="true"
+        class="ion-padding-horizontal"
+        placeholder="Valitse kunnat"
+        cancelText="Peruuta"
+        okText="OK"
+        ><ion-select-option
+          *ngFor="let location of locationList"
+          value="{{location}}"
+          >{{location}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item class="filterbg"
+      ><ion-button (click)="getFiltered()">Hae tekijät</ion-button></ion-item
+    ></ion-list
   >
   <app-job-card *ngFor="let job of jobsData" [job]="job"></app-job-card>
 </ion-content>

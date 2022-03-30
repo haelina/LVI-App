@@ -12,6 +12,7 @@ export class JobsPage implements OnInit {
   locationList = getLocationList();
   jobsData: JobEntry[];
   filterLocations: string[];
+  showFilters: false;
 
   constructor(private firestore: FirestoreService) {
     this.firestore.getJobs().subscribe((res) => {
@@ -30,5 +31,6 @@ export class JobsPage implements OnInit {
         this.jobsData = res;
         console.log(this.jobsData);
       });
+    this.showFilters = false;
   }
 }
