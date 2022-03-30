@@ -2,3 +2,15 @@
   min-height: 60px;
   padding: 5px;
 }
+
+ion-content {
+  --ion-background-color: #f2f2f2;
+}
+
+.filterbg {
+  --ion-background-color: #6c6a6a;
+}
+
+.fetchbutton {
+  background-color: red;
+}

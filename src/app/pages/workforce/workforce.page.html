@@ -1,22 +1,28 @@
 <app-menu></app-menu>
 <ion-content>
-  <ion-grid class="ion-padding">
+  <ion-grid class="ion-padding-top ion-padding-horizontal">
     <ion-row>
-      <ion-col
+      <ion-col class="ion-align-self-center"
         ><ion-label>
           <h1>Tekijät</h1>
         </ion-label></ion-col
       >
-      <ion-col
+      <ion-col class="ion-text-end"
         ><ion-button class="filterbutton" (click)="showFilters=!showFilters"
           ><ion-icon size="large" slot="end" name="filter-outline"></ion-icon
-          ><ion-label>Rajaa<br />tuloksia</ion-label></ion-button
+          ><ion-label *ngIf="showFilters"
+            >Piilota <br />
+            rajausvalikko</ion-label
+          >
+          <ion-label *ngIf="!showFilters"
+            >Rajaa<br />tuloksia</ion-label
+          ></ion-button
         ></ion-col
       >
     </ion-row>
   </ion-grid>
-  <ion-list lines="none" *ngIf="showFilters" class="ion-padding-end">
-    <ion-item>
+  <ion-list lines="none" *ngIf="showFilters" class="filterbg ion-no-padding">
+    <ion-item lines="none" class="filterbg">
       <ion-select
         (ionChange)="filterLocations = $event.target.value"
         multiple="true"
@@ -31,7 +37,7 @@
         >
       </ion-select>
     </ion-item>
-    <ion-item lines="none"
+    <ion-item lines="none" class="filterbg"
       ><ion-calendar
         [(ngModel)]="dateRange"
         [options]="optionsRange"
@@ -40,8 +46,10 @@
         >></ion-calendar
       ></ion-item
     >
-    <ion-item
+    <ion-item class="filterbg"
       ><ion-button
+        fill="solid"
+        class="fetchbutton"
         [disabled]="!filterLocations || filterLocations.length === 0 || !dateRange"
         (click)="getFiltered()"
         >Hae tekijät</ion-button
