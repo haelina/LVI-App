@@ -1,58 +1,53 @@
 <app-menu></app-menu>
 <ion-content>
-  <h1 class="ion-padding-start">Tekijät</h1>
-  <ion-item lines="none">
-    <ion-select
-      (ionChange)="filterLocations = $event.target.value"
-      multiple="true"
-      class="ion-padding-horizontal"
-      placeholder="Valitse kunnat"
-      cancelText="Peruuta"
-      okText="OK"
-    >
-      <ion-select-option value="Akaa">Akaa</ion-select-option>
-      <ion-select-option value="Hämeenkyrö">Hämeenkyrö</ion-select-option>
-      <ion-select-option value="Ikaalinen">Ikaalinen</ion-select-option>
-      <ion-select-option value="Juupajoki">Juupajoki</ion-select-option>
-      <ion-select-option value="Kangasala">Kangasala</ion-select-option>
-      <ion-select-option value="Kihniö">Kihniö</ion-select-option>
-      <ion-select-option value="Kuhmoinen">Kuhmoinen</ion-select-option>
-      <ion-select-option value="Lempäälä">Lempäälä</ion-select-option>
-      <ion-select-option value="Mänttä-Vilppula"
-        >Mänttä-Vilppula</ion-select-option
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col
+        ><ion-label>
+          <h1>Tekijät</h1>
+        </ion-label></ion-col
       >
-      <ion-select-option value="Nokia">Nokia</ion-select-option>
-      <ion-select-option value="Orivesi">Orivesi</ion-select-option>
-      <ion-select-option value="Parkano">Parkano</ion-select-option>
-      <ion-select-option value="Pirkkala">Pirkkala</ion-select-option>
-      <ion-select-option value="Punkalaidun">Punkalaidun</ion-select-option>
-      <ion-select-option value="Pälkäne">Pälkäne</ion-select-option>
-      <ion-select-option value="Ruovesi">Ruovesi</ion-select-option>
-      <ion-select-option value="Sastamala">Sastamala</ion-select-option>
-      <ion-select-option value="Tampere">Tampere</ion-select-option>
-      <ion-select-option value="Urjala">Urjala</ion-select-option>
-      <ion-select-option value="Valkeakoski">Valkeakoski</ion-select-option>
-      <ion-select-option value="Vesilahti">Vesilahti</ion-select-option>
-      <ion-select-option value="Virrat">Virrat</ion-select-option>
-      <ion-select-option value="Ylöjärvi">Ylöjärvi</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item lines="none"
-    ><ion-calendar
-      [(ngModel)]="dateRange"
-      [options]="optionsRange"
-      [type]="type"
-      [format]="'YYYY-MM-DD'"
-      >></ion-calendar
-    ></ion-item
-  >
-  <ion-item
-    ><ion-button
-      [disabled]="!filterLocations || filterLocations.length === 0 || !dateRange"
-      (click)="getFiltered()"
-      >Hae tekijät</ion-button
-    ></ion-item
-  >
+      <ion-col
+        ><ion-button class="filterbutton" (click)="showFilters=!showFilters"
+          ><ion-icon size="large" slot="end" name="filter-outline"></ion-icon
+          ><ion-label>Rajaa<br />tuloksia</ion-label></ion-button
+        ></ion-col
+      >
+    </ion-row>
+  </ion-grid>
+  <ion-list lines="none" *ngIf="showFilters" class="ion-padding-end">
+    <ion-item>
+      <ion-select
+        (ionChange)="filterLocations = $event.target.value"
+        multiple="true"
+        class="ion-padding-horizontal"
+        placeholder="Valitse kunnat"
+        cancelText="Peruuta"
+        okText="OK"
+        ><ion-select-option
+          *ngFor="let location of locationList"
+          value="{{location}}"
+          >{{location}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none"
+      ><ion-calendar
+        [(ngModel)]="dateRange"
+        [options]="optionsRange"
+        [type]="type"
+        [format]="'YYYY-MM-DD'"
+        >></ion-calendar
+      ></ion-item
+    >
+    <ion-item
+      ><ion-button
+        [disabled]="!filterLocations || filterLocations.length === 0 || !dateRange"
+        (click)="getFiltered()"
+        >Hae tekijät</ion-button
+      ></ion-item
+    >
+  </ion-list>
   <app-workercard
     *ngFor="let worker of workerData"
     [worker]="worker"
