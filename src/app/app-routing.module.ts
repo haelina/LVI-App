@@ -58,14 +58,11 @@ const routes: Routes = [
     ...canActivate(redirectUnauthorizedToLogin),
   },
   {
-    path: 'addnew',
-    loadChildren: () =>
-      import('./pages/addnew/addnew.module').then((m) => m.AddnewPageModule),
-    ...canActivate(redirectUnauthorizedToLogin),
-  },
-  {
     path: 'modify-job',
-    loadChildren: () => import('./pages/modify-job/modify-job.module').then( m => m.ModifyJobPageModule)
+    loadChildren: () =>
+      import('./pages/modify-job/modify-job.module').then(
+        (m) => m.ModifyJobPageModule
+      ),
   },
 ];
 
