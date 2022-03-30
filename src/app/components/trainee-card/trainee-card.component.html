@@ -2,27 +2,30 @@
   <ion-item lines="none">
     <h3>Lyhyt otsikko</h3>
   </ion-item>
-  <ion-item lines="none">
-    <ion-icon
-      size="large"
-      color="dark"
-      name="information-circle"
-      slot="start"
-    ></ion-icon>
-    <ion-label>Yhteystiedot:</ion-label>
-  </ion-item>
-  <ion-item
-    lines="none"
-    class="contactInfo ion-padding-horizontal"
-    *ngIf="userdata"
-  >
-    <ion-label
-      >Nimi: {{ userdata.firstName }} {{ userdata.lastName }}<br />
-      Alue: {{ userdata.zip }} {{ userdata.city }}<br />
-      Sähköposti: {{ userdata.email }}<br />
-      Puhelin: {{ userdata.phone }}
-    </ion-label></ion-item
-  >
+  <ion-list lines="none" class="contactInfo ion-padding" *ngIf="userdata">
+    <ion-item lines="none">
+      <ion-icon color="dark" name="information-circle" slot="start"></ion-icon>
+      <ion-label>{{ userdata.firstName }} {{ userdata.lastName }}</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="location-outline"></ion-icon>
+      <ion-label class="ion-text-wrap"
+        >{{ userdata.zip }} {{ userdata.city }}</ion-label
+      >
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="at-outline"></ion-icon>
+      <ion-label class="ion-text-wrap">
+        {{ userdata.email }}</ion-label
+      ></ion-item
+    >
+    <ion-item button fill="outline" class="callButton" (click)="makeCall()">
+      <ion-icon color="white" slot="start" name="call-outline"></ion-icon>
+      <ion-label class="ion-text-wrap ion-padding-start"
+        >Soita {{ userdata.phone }}</ion-label
+      ></ion-item
+    >
+  </ion-list>
   <ion-item lines="none">
     <ion-label class="ion-text-wrap">
       <ion-button *ngFor="let location of trainee.locations">{{

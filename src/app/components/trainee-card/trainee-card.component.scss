@@ -1,0 +1,16 @@
+.contactInfo {
+  border: 1px solid #0041a1;
+  border-radius: 10px;
+  margin: 0px 10px;
+  --ion-background-color: #e1f8ff;
+
+  .callButton {
+    --background: #0041a1;
+    --color: white;
+  }
+}
+
+ion-item,
+ion-card {
+  --background: white;
+}
