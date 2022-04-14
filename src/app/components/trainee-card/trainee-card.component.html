@@ -16,7 +16,9 @@
       ><ion-icon
         class="toggleIcon"
         slot="icon-only"
-        name="information-circle-outline"
+        name="{{
+          showContact ? 'caret-down-outline' : 'information-circle-outline'
+        }}"
       ></ion-icon
     ></ion-button>
   </ion-item>
