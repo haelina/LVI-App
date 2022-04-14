@@ -1,34 +1,46 @@
 <ion-header>
-  <ion-title>Login page</ion-title>
+  <ion-title>TYÖDIILERI</ion-title>
 </ion-header>
 <ion-content class="ion-padding">
+  <ion-button
+    expand="full"
+    type="button"
+    class="ion-margin-vertical googleButton"
+    (click)="signWithGoogle()"
+    ><ion-icon slot="start" class="ion-padding" name="logo-google"></ion-icon>
+    Google-kirjautuminen</ion-button
+  >
+
+  <ion-item lines="none" class="ion-text-center customDiv"
+    ><ion-label>-- TAI --</ion-label></ion-item
+  >
   <form [formGroup]="credentials" (ngSubmit)="login()">
-    <ion-item class="ion-margin-bottom">
+    <ion-item class="ion-margin-vertical">
       <ion-input
         type="email"
-        placeholder="Email"
+        placeholder="Sähköpostiosoite"
         formControlName="email"
       ></ion-input>
       <ion-note
         slot="error"
         *ngIf="(email.dirty || email.touched) && email.errors"
-        >Email is invalid</ion-note
+        >Sähköpostiosoite on virheellinen</ion-note
       >
     </ion-item>
     <ion-item class="ion-margin-bottom">
       <ion-input
         type="password"
-        placeholder="Password"
+        placeholder="Salasana"
         formControlName="password"
       ></ion-input>
       <ion-note
         slot="error"
         *ngIf="(password.dirty ||password.touched) && password.errors"
-        >Password needs to have minimum 6 letters</ion-note
+        >Salasanassa täytyy olla vähintään 6 merkkiä</ion-note
       >
     </ion-item>
     <ion-button expand="full" type="submit" [disabled]="!credentials.valid"
-      >Login</ion-button
+      >Kirjaudu sisään</ion-button
     >
   </form>
   <ion-button
@@ -37,14 +49,6 @@
     class="ion-margin-top"
     [routerLink]="['/register']"
     routerDirection="root"
-    >Create account</ion-button
-  >
-
-  <ion-button
-    expand="full"
-    type="button"
-    class="ion-margin-top"
-    (click)="signWithGoogle()"
-    >Login with Google</ion-button
+    >Luo tili</ion-button
   >
 </ion-content>

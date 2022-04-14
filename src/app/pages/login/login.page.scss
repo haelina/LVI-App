@@ -1,4 +1,21 @@
 ion-header {
   text-align: center;
   padding: 5%;
+  height: 100px;
+  background-color: #484848;
+  color: white;
+}
+
+.googleButton {
+  --background: white;
+  color: black;
+}
+
+.customDiv {
+  --background: #e1f8ff;
+  --color: gray;
+}
+
+ion-content {
+  --background: #e1f8ff;
 }
