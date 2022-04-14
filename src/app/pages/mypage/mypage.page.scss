@@ -43,7 +43,7 @@ ion-list[slot="content"] {
 
 .icon-bg {
   background-color: #4fd5ff;
-  padding: 5px;
+  padding: 6px;
 }
 
 .white-bg {
@@ -60,6 +60,7 @@ form {
     ion-label {
       font-size: 21px;
       padding-bottom: 20px;
+      padding-top: 0px;
     }
     ion-input {
       --background: white;
