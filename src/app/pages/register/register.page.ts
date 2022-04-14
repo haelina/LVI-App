@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -28,11 +33,33 @@ export class RegisterPage implements OnInit {
     return this.credentials.get('password');
   }
 
+  get passwordConfirmation() {
+    return this.credentials.get('passwordConfirmation');
+  }
+
   ngOnInit() {
-    this.credentials = this.formbuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-    });
+    this.credentials = this.formbuilder.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        passwordConfirmation: ['', [Validators.required]],
+      },
+      {
+        validators: this.matchingPasswords.bind(this),
+      }
+    );
+  }
+
+  matchingPasswords(formGroup: FormGroup) {
+    console.log('checking password match');
+    const { value: password } = formGroup.get('password');
+    const { value: passwordConfirmation } = formGroup.get(
+      'passwordConfirmation'
+    );
+    console.log(password + passwordConfirmation);
+    return password === passwordConfirmation
+      ? null
+      : { passwordNotMatch: true };
   }
 
   async register() {

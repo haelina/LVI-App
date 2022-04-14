@@ -7,25 +7,37 @@
     <ion-item class="ion-margin-bottom">
       <ion-input
         type="email"
-        placeholder="Email"
+        placeholder="Sähköpostiosoite"
         formControlName="email"
       ></ion-input>
       <ion-note
         slot="error"
         *ngIf="(email.dirty || email.touched) && email.errors"
-        >Email is invalid</ion-note
+        >Syötä sähköpostiosoite</ion-note
       >
     </ion-item>
     <ion-item class="ion-margin-bottom">
       <ion-input
         type="password"
-        placeholder="Password"
+        placeholder="Salasana"
         formControlName="password"
       ></ion-input>
       <ion-note
         slot="error"
         *ngIf="(password.dirty ||password.touched) && password.errors"
-        >Password needs to have minimum 6 letters</ion-note
+        >Salasanassa täytyy olla vähintään 6 merkkiä</ion-note
+      >
+    </ion-item>
+    <ion-item class="ion-margin-bottom">
+      <ion-input
+        type="password"
+        placeholder="Salasana uudelleen"
+        formControlName="passwordConfirmation"
+      ></ion-input>
+      <ion-note
+        slot="error"
+        *ngIf="(passwordConfirmation.dirty ||passwordConfirmation.touched) && passwordConfirmation.errors && credentials.hasError('passwordNotMatch')"
+        >Salasana ei täsmää</ion-note
       >
     </ion-item>
     <ion-grid
