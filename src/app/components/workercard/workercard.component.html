@@ -12,12 +12,15 @@
       slot="start"
     ></ion-icon>
     <ion-label class="ion-text-wrap"
-      >{{ userdata.firstName }} {{ userdata.lastName }} / {{ userdata.company }}
-    </ion-label>
-    <ion-icon
-      slot="end"
-      name="{{ showContact ? 'eye-outline' : 'eye-off-outline' }}"
-    ></ion-icon>
+      >{{ userdata.firstName }} {{ userdata.lastName }} /
+      {{ userdata.company }} </ion-label
+    ><ion-button class="toggleContact" slot="end"
+      ><ion-icon
+        class="toggleIcon"
+        slot="icon-only"
+        name="{{ showContact ? 'eye-outline' : 'eye-off-outline' }}"
+      ></ion-icon
+    ></ion-button>
   </ion-item>
   <ion-list
     lines="none"
