@@ -1,7 +1,7 @@
 <ion-card class="ion-no-padding">
-  <ion-item lines="none">
+  <!-- <ion-item lines="none">
     <h3>Lyhyt otsikko</h3>
-  </ion-item>
+  </ion-item> -->
   <ion-item lines="none" (click)="showContact = !showContact" *ngIf="userdata">
     <ion-icon
       size="large"
@@ -12,10 +12,15 @@
     <ion-label class="ion-text-wrap"
       >{{ userdata.firstName }} {{ userdata.lastName }} / {{ userdata.company }}
     </ion-label>
-    <ion-icon
-      slot="end"
-      name="{{ showContact ? 'eye-outline' : 'eye-off-outline' }}"
-    ></ion-icon>
+    <ion-button class="toggleContact" slot="end"
+      ><ion-icon
+        class="toggleIcon"
+        slot="icon-only"
+        name="{{
+          showContact ? 'caret-down-outline' : 'information-circle-outline'
+        }}"
+      ></ion-icon
+    ></ion-button>
   </ion-item>
   <ion-list
     lines="none"
