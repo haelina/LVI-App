@@ -1,12 +1,30 @@
-<ion-card class="ion-no-padding">
-  <ion-item lines="none">
+<ion-card class="ion-no-padding ion-padding-top">
+  <!-- <ion-item lines="none">
     <h3>Lyhyt otsikko</h3>
+  </ion-item> -->
+  <ion-item lines="none" (click)="showContact = !showContact" *ngIf="userdata">
+    <ion-icon
+      size="large"
+      color="dark"
+      name="happy-outline"
+      slot="start"
+    ></ion-icon>
+    <ion-label class="ion-text-wrap"
+      >{{ userdata.firstName }} {{ userdata.lastName }}
+    </ion-label>
+    <ion-button class="toggleContact" slot="end"
+      ><ion-icon
+        class="toggleIcon"
+        slot="icon-only"
+        name="information-circle-outline"
+      ></ion-icon
+    ></ion-button>
   </ion-item>
-  <ion-list lines="none" class="contactInfo ion-padding" *ngIf="userdata">
-    <ion-item lines="none">
-      <ion-icon color="dark" name="information-circle" slot="start"></ion-icon>
-      <ion-label>{{ userdata.firstName }} {{ userdata.lastName }}</ion-label>
-    </ion-item>
+  <ion-list
+    lines="none"
+    class="contactInfo ion-padding"
+    *ngIf="showContact && userdata"
+  >
     <ion-item lines="none">
       <ion-icon slot="start" name="location-outline"></ion-icon>
       <ion-label class="ion-text-wrap"

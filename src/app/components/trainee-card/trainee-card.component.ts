@@ -12,6 +12,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class TraineeCardComponent implements OnInit {
   @Input() trainee: TraineeEntry;
   userdata: Userdetails;
+  showContact = false;
 
   constructor(
     private firestore: FirestoreService,
