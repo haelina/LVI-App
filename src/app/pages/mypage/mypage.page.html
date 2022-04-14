@@ -13,7 +13,7 @@
       </ion-item>
       <ion-list slot="content" lines="none">
         <ion-item>
-          <ion-text color="primary"><h2>Muokkaa omia tietoja</h2></ion-text>
+          <ion-text color="primary"><h4>Muokkaa omia tietoja</h4></ion-text>
         </ion-item>
         <ion-item>
           <ion-note color="tertiary">
@@ -84,9 +84,9 @@
         >
           <ion-item>
             <ion-text color="primary">
-              <h2>
+              <h4>
                 {{noWorkdetails? 'Aloita työnhaku': 'Muokkaa työnhakuasi'}}
-              </h2>
+              </h4>
             </ion-text></ion-item
           ><ion-item>
             <ion-note color="tertiary">
@@ -94,7 +94,7 @@
               työnhaun tiedot ja paina lopuksi Tallenna.': 'Sinulla on työnhaku
               käynnissä. Muokkaa tarvittaessa työnhaun tietoja.'}}
               <br /><br /><b>Tärkeää!</b> Tarkista myös, että yhteystietosi ovat
-              oikein Omat tiedot-välilehdellä. Siellä olevat yhteystiedot
+              oikein Omat tiedot -välilehdellä. Siellä olevat yhteystiedot
               tulevat hakemukseesi yhteystiedoiksi ja ne näkyvät muille
               käyttäjille</ion-note
             >
@@ -183,13 +183,13 @@
         >
           <ion-item>
             <ion-text color="primary">
-              <h2>Lisää uusi työ</h2>
+              <h4>Lisää uusi työ</h4>
             </ion-text></ion-item
           ><ion-item>
             <ion-note color="tertiary">
               Täytä alla olevat tiedot lisätäksesi uuden työn.
               <br /><br /><b>Tärkeää!</b> Tarkista myös, että yhteystietosi ovat
-              oikein Omat tiedot-välilehdellä. Siellä olevat yhteystiedot
+              oikein Omat tiedot -välilehdellä. Siellä olevat yhteystiedot
               tulevat hakemukseesi yhteystiedoiksi ja ne näkyvät muille
               käyttäjille</ion-note
             >
@@ -254,7 +254,7 @@
         </form>
         <div class="divider ion-margin"></div>
         <ion-list-header>
-          <ion-label><h1>Omat työilmoitukset:</h1></ion-label>
+          <ion-text color="primary"> <h4>Omat työilmoitukset:</h4></ion-text>
         </ion-list-header>
         <ion-item *ngFor="let job of jobsData" class="custom-padding">
           <app-my-job-card [job]="job"></app-my-job-card>
