@@ -1,24 +1,27 @@
 <ion-card>
-  <ion-card-header>
+  <!-- <ion-card-header>
     <ion-card-title>Lyhyt kuvaus</ion-card-title>
-  </ion-card-header>
-  <ion-item>
-    <ion-label class="ion-text-wrap" *ngFor="let loc of job.locations"
-      ><ion-button>{{ loc }}</ion-button></ion-label
-    >
-  </ion-item>
+  </ion-card-header> -->
+
   <ion-item>
     <ion-label class="ion-text-wrap">
       Ajankohta: {{ job.timing }}<br />Työn kesto: {{ job.duration
       }}<br />Sijainti: {{ job.address }}</ion-label
     >
   </ion-item>
-  <ion-card-content> {{ job.details }} </ion-card-content>
+  <ion-item>
+    <ion-label class="ion-text-wrap" *ngFor="let loc of job.locations"
+      ><ion-button color="secondary">{{ loc }}</ion-button></ion-label
+    >
+  </ion-item>
   <ion-item
-    ><ion-button (click)="openModal()"
-      ><ion-icon slot="end" name="pencil-outline"></ion-icon>Muokkaa</ion-button
-    ><ion-button fill="outline" color="danger" (click)="deleteJob()"
-      ><ion-icon slot="end" color="danger" name="trash-outline"></ion-icon>
+    ><ion-label class="ion-text-wrap"> {{ job.details }}</ion-label></ion-item
+  >
+  <ion-item class="ion-padding-end"
+    ><ion-button slot="end" (click)="openModal()"
+      ><ion-icon name="pencil-outline"></ion-icon>Muokkaa</ion-button
+    ><ion-button slot="end" fill="outline" color="danger" (click)="deleteJob()"
+      ><ion-icon color="danger" name="trash-outline"></ion-icon>
       Poista</ion-button
     ></ion-item
   >
