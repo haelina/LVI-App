@@ -368,45 +368,49 @@
       </ion-list>
     </ion-accordion>
   </ion-accordion-group>
-  <ion-content class="ion-padding" *ngIf="newUser">
-    <ion-text><h1>Tervetuloa Työdiileriin</h1></ion-text>
-    <ion-text><h3>Täytäthän tietosi ensin</h3></ion-text>
-    <form *ngIf="!isLoading" [formGroup]="myData" (ngSubmit)="updateMyData()">
-      <ion-item>
-        <ion-label>Yritys:</ion-label>
-        <ion-input type="text" formControlName="company"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Etunimi:</ion-label>
-        <ion-input type="text" formControlName="firstName"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Sukunimi:</ion-label>
-        <ion-input type="text" formControlName="lastName"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Osoite:</ion-label>
-        <ion-input type="text" formControlName="address"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Postinumero:</ion-label>
-        <ion-input type="text" formControlName="zip"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Postitoimip.:</ion-label>
-        <ion-input type="text" formControlName="city"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Puhelin:</ion-label>
-        <ion-input type="text" formControlName="phone"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Email:</ion-label>
-        <ion-input type="email" formControlName="email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-button color="medium" type="submit">Tallenna</ion-button>
-      </ion-item>
-    </form>
-  </ion-content>
+</ion-content>
+<ion-content class="ion-padding" *ngIf="newUser">
+  <ion-text color="primary"><h3>Tervetuloa Työdiileriin</h3></ion-text>
+  <ion-text>Täytäthän tietosi ensin</ion-text>
+  <form *ngIf="!isLoading" [formGroup]="myData" (ngSubmit)="updateMyData()">
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-label position="stacked">Yritys:</ion-label>
+      <ion-input type="text" formControlName="company"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-label position="stacked">Etunimi:</ion-label>
+      <ion-input type="text" formControlName="firstName"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-label position="stacked">Sukunimi:</ion-label>
+      <ion-input type="text" formControlName="lastName"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-label position="stacked">Osoite:</ion-label>
+      <ion-input type="text" formControlName="address"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-label position="stacked">Postinumero:</ion-label>
+      <ion-input
+        type="text"
+        inputmode="numeric"
+        formControlName="zip"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-label position="stacked">Postitoimipaikka:</ion-label>
+      <ion-input type="text" formControlName="city"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-label position="stacked">Puhelinnumero:</ion-label>
+      <ion-input type="tel" inputmode="tel" formControlName="phone"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding ion-margin-bottom">
+      <ion-label position="stacked">Sähköpostiosoite:</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-button slot="end" size="default" type="submit">Tallenna</ion-button>
+    </ion-item>
+  </form>
 </ion-content>
