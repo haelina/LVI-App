@@ -1,4 +1,29 @@
 ion-header {
   text-align: center;
+  display: flex;
   padding: 5%;
+  height: 100px;
+  background-color: #484848;
+  color: white;
+}
+
+h4 {
+  text-align: center;
+  color: #0041a1;
+  margin-bottom: 30px;
+}
+
+ion-content {
+  --background: #e1f8ff;
+}
+
+.back-button {
+  --background: white;
+  --padding-top: 23px;
+  --padding-bottom: 23px;
+}
+
+.create-button {
+  --padding-top: 25px;
+  --padding-bottom: 25px;
 }
