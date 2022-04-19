@@ -1,21 +1,58 @@
 ion-header {
   text-align: center;
+  display: flex;
   padding: 5%;
   height: 100px;
   background-color: #484848;
   color: white;
 }
 
+h4 {
+  text-align: center;
+  color: #0041a1;
+  margin-bottom: 30px;
+}
+
 .googleButton {
   --background: white;
   color: black;
+  --padding-bottom: 30px;
+  --padding-top: 30px;
 }
 
 .customDiv {
   --background: #e1f8ff;
   --color: gray;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 ion-content {
   --background: #e1f8ff;
+}
+
+.divider {
+  border-bottom: 1px solid rgb(175, 175, 175);
+  padding-top: 10px;
+}
+
+.button-rad {
+  --border-radius: 5px;
+  width: 100%;
+}
+
+.log-button {
+  --padding-bottom: 25px;
+  --padding-top: 25px;
+}
+
+ion-icon {
+  color: red;
+}
+
+.reg-button {
+  --background: #484848;
+  min-height: 50px;
+  --padding-bottom: 40px;
+  --padding-top: 40px;
 }

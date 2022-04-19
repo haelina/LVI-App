@@ -1,11 +1,11 @@
 <ion-header>
-  <ion-title>TYÖDIILERI</ion-title>
+  <ion-title><h1>TYÖDIILERI</h1></ion-title>
 </ion-header>
 <ion-content class="ion-padding">
+  <h4>KIRJAUDU SISÄÄN</h4>
   <ion-button
-    expand="full"
     type="button"
-    class="ion-margin-vertical googleButton"
+    class="googleButton button-rad"
     (click)="signWithGoogle()"
     ><ion-icon slot="start" class="ion-padding" name="logo-google"></ion-icon>
     Google-kirjautuminen</ion-button
@@ -15,7 +15,7 @@
     ><ion-label>-- TAI --</ion-label></ion-item
   >
   <form [formGroup]="credentials" (ngSubmit)="login()">
-    <ion-item class="ion-margin-vertical">
+    <ion-item class="ion-margin-bottom">
       <ion-input
         type="email"
         placeholder="Sähköpostiosoite"
@@ -39,16 +39,21 @@
         >Salasanassa täytyy olla vähintään 6 merkkiä</ion-note
       >
     </ion-item>
-    <ion-button expand="full" type="submit" [disabled]="!credentials.valid"
+    <ion-button
+      class="ion-margin-bottom button-rad log-button"
+      type="submit"
+      [disabled]="!credentials.valid"
       >Kirjaudu sisään</ion-button
     >
   </form>
+
+  <div class="divider ion-margin"></div>
   <ion-button
-    expand="full"
     type="button"
-    class="ion-margin-top"
+    class="ion-margin-top button-rad reg-button"
     [routerLink]="['/register']"
     routerDirection="root"
-    >Luo tili</ion-button
+  >
+    EI TILIÄ?<br />LUO UUSI TILI</ion-button
   >
 </ion-content>
